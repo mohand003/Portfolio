@@ -17,7 +17,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
         <div class="about-content">
           <div class="about-image" @fadeInLeft>
             <div class="image-wrapper">
-              <img src="https://images.pexels.com/photos/4974915/pexels-photo-4974915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Alex working at a desk">
+              <img src="https://cdn.mos.cms.futurecdn.net/GaAJCwmwsGF7QAKirfUyG5.jpg" alt="">
             </div>
           </div>
           
