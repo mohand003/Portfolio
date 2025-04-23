@@ -22,28 +22,7 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
             [class.active]="activeFilter === 'all'"
             (click)="filterProjects('all')"
           >
-            All
-          </button>
-          <button 
-            class="tab-btn" 
-            [class.active]="activeFilter === 'web'"
-            (click)="filterProjects('web')"
-          >
-            Web Apps
-          </button>
-          <button 
-            class="tab-btn" 
-            [class.active]="activeFilter === 'mobile'"
-            (click)="filterProjects('mobile')"
-          >
-            Mobile
-          </button>
-          <button 
-            class="tab-btn" 
-            [class.active]="activeFilter === 'ui'"
-            (click)="filterProjects('ui')"
-          >
-            UI Design
+            All Projects
           </button>
         </div>
         
