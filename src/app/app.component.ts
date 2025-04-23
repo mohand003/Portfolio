@@ -29,7 +29,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   template: `
-    <div [class.dark-theme]="themeService.isDarkTheme()">
+    <div class="light-theme">
       <app-header></app-header>
       <main>
         <app-hero></app-hero>
@@ -54,5 +54,6 @@ export class AppComponent {
 
   ngOnInit() {
     document.documentElement.classList.add('light-theme');
+    document.documentElement.classList.remove('dark-theme');
   }
 }
