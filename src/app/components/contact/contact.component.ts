@@ -403,7 +403,6 @@ export class ContactComponent {
   isSubmitting = false;
   formSubmitted = false;
   
-  // Font Awesome icons
   faEnvelope = faEnvelope;
   faMapMarkerAlt = faMapMarkerAlt;
   faPhone = faPhone;
@@ -431,7 +430,6 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       this.isSubmitting = true;
       
-      // Simulate API call
       setTimeout(() => {
         this.isSubmitting = false;
         this.formSubmitted = true;
