@@ -5,7 +5,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "demo": {
+    "Portfolio": {
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -20,7 +20,14 @@
               "aot": true,
               "extractLicenses": true,
               "namedChunks": false,
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false
             }
@@ -35,7 +42,9 @@
             "outputPath": "dist/demo",
             "polyfills": ["zone.js"],
             "scripts": [],
-            "styles": ["src/global_styles.css"],
+            "styles": [
+              "src/styles.css"
+            ],
             "tsConfig": "tsconfig.app.json"
           }
         },

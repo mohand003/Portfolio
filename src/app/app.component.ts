@@ -51,4 +51,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 })
 export class AppComponent {
   constructor(public themeService: ThemeService) {}
+
+  ngOnInit() {
+    // Force theme initialization
+    document.documentElement.classList.add('light-theme');
+    // If you have a theme service, call it here
+    // this.themeService.initialize();
+  }
 }
