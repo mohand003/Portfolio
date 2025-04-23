@@ -312,9 +312,9 @@ export class ProjectsComponent {
       title: 'Portfolio Website',
       description: 'A web page that expresses your work, your qualifications for the job market, and ways to contact you.',
       image: 'https://parametric-architecture.com/wp-content/uploads/2024/08/Architecture-Portfolio-Cover-1024x683.webp',
-      tech: ['Angular', 'TypeScript', 'Angular Material', 'Express.js'],
-      link: 'https://example.com/tasks',
-      github: 'https://github.com/example/tasks',
+      tech: ['Angular', 'TypeScript', 'Angular Material'],
+      link: 'https://mohanad-portfolio-delta.vercel.app/',
+      github: 'https://github.com/mohand003/Portfolio.git',
       featured: false
     },
   ];
