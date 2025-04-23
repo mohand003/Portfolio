@@ -11,7 +11,10 @@ import { ThemeService } from '../../services/theme.service';
       <div class="container">
         <nav>
           <div class="logo">
-            <a href="#">Mohanad<span>Dev</span></a>
+            <a href="#">
+              <img src="assets/2025042401150776.png" alt="Logo">
+              <span class="logo-text">Mohanad<span class="accent">Dev</span></span>
+            </a>
           </div>
           
           <div class="nav-links" [class.active]="menuOpen">
@@ -65,9 +68,24 @@ import { ThemeService } from '../../services/theme.service';
       font-weight: 700;
       color: var(--color-neutral-100);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .logo span {
+    .logo img {
+      width: 5rem;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+
+    .logo-text {
+      display: inline-block;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo .accent {
       color: var(--color-accent-400);
     }
 

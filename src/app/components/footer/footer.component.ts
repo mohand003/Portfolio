@@ -10,7 +10,9 @@ import { CommonModule } from '@angular/common';
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <a href="#">Mohanad<span>Dev</span></a>
+            <a href="#">
+              <img src="assets/2025042401150776.png" alt="Logo">
+            </a>
             <p>Front-End Developer specializing in modern JavaScript frameworks</p>
           </div>
           
@@ -80,6 +82,12 @@ import { CommonModule } from '@angular/common';
     .footer-logo p {
       margin-top: var(--space-2);
       opacity: 0.8;
+    }
+
+    .footer-logo img {
+      width: 8rem;
+      object-fit: contain;
+      vertical-align: middle;
     }
     
     .footer-links {
