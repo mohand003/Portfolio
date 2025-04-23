@@ -31,14 +31,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   template: `
     <div class="light-theme">
       <app-header></app-header>
-      <main>
-        <app-hero></app-hero>
-        <app-about></app-about>
-        <app-skills></app-skills>
-        <app-projects></app-projects>
-        <app-experience></app-experience>
-        <app-contact></app-contact>
-        <router-outlet></router-outlet>
+      <main class="main-container">
+        <div class="content-wrapper">
+          <app-hero></app-hero>
+          <app-about></app-about>
+          <app-skills></app-skills>
+          <app-projects></app-projects>
+          <app-experience></app-experience>
+          <app-contact></app-contact>
+          <router-outlet></router-outlet>
+        </div>
       </main>
       <app-footer></app-footer>
     </div>
@@ -46,6 +48,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styles: `
     main {
       min-height: 100vh;
+    }
+    
+    .main-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .content-wrapper {
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .content-wrapper {
+        overflow-x: hidden;
+      }
     }
   `
 })

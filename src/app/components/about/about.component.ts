@@ -77,10 +77,13 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-5);
+      width: 100%;
+      overflow-x: hidden;
     }
     
     .about-image {
       position: relative;
+      max-width: 100%;
     }
     
     .image-wrapper {
@@ -125,9 +128,17 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       transform: scale(1.05);
     }
     
+    .about-text {
+      width: 100%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+    }
+    
     .about-text h3 {
       margin-bottom: var(--space-3);
       color: var(--color-primary-500);
+      font-size: clamp(1.25rem, 5vw, 1.5rem);
     }
     
     .about-text p {
@@ -141,11 +152,14 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       grid-template-columns: 1fr;
       gap: var(--space-2);
       margin: var(--space-4) 0;
+      width: 100%;
     }
     
     .info-group {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      width: 100%;
     }
     
     .info-label {
@@ -155,6 +169,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
     
     .info-value {
       color: var(--text-secondary);
+      word-break: break-word;
     }
     
     .info-value.available {
@@ -172,12 +187,14 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       background-color: var(--color-success-500);
       border-radius: 50%;
       margin-right: 8px;
+      flex-shrink: 0;
     }
     
     .social-links {
       display: flex;
       gap: var(--space-3);
       margin-bottom: var(--space-4);
+      flex-wrap: wrap;
     }
     
     .social-link {
@@ -199,8 +216,34 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
     
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      word-break: break-word;
+      white-space: normal;
+    }
+    
     .btn svg {
       margin-right: var(--space-1);
+      flex-shrink: 0;
+    }
+    
+    @media (max-width: 480px) {
+      .info-group {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: var(--space-2);
+      }
+      
+      .info-label {
+        margin-bottom: 4px;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
     
     @media (min-width: 768px) {
