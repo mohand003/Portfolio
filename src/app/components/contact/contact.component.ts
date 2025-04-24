@@ -434,7 +434,7 @@ export class ContactComponent {
 
       const formData = this.contactForm.value;
 
-      this.http.post('https://mohanad-production.up.railway.app/api/send', formData).subscribe({
+      this.http.post('https://mohanad-production-039b.up.railway.app/api/send', formData).subscribe({
         next: (response) => {
           this.isSubmitting = false;
           this.formSubmitted = true;
