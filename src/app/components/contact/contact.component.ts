@@ -5,11 +5,13 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope, faMapMarkerAlt, faPhone, faPaperPlane, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
+  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule, HttpClientModule],
   template: `
     <section id="contact" class="section">
       <div class="container">
@@ -75,7 +77,7 @@ import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-i
                 <input
                   type="text"
                   id="name"
-                  formControlName="name"
+                  formControlName="Name"
                   [class.error]="isFieldInvalid('name')"
                 >
                 @if (isFieldInvalid('name')) {
@@ -88,7 +90,7 @@ import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-i
                 <input
                   type="email"
                   id="email"
-                  formControlName="email"
+                  formControlName="Email"
                   [class.error]="isFieldInvalid('email')"
                 >
                 @if (isFieldInvalid('email')) {
@@ -101,7 +103,7 @@ import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-i
                 <input
                   type="text"
                   id="subject"
-                  formControlName="subject"
+                  formControlName="Subject"
                   [class.error]="isFieldInvalid('subject')"
                 >
                 @if (isFieldInvalid('subject')) {
@@ -113,7 +115,7 @@ import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-i
                 <label for="message">Message</label>
                 <textarea
                   id="message"
-                  formControlName="message"
+                  formControlName="Message"
                   rows="6"
                   [class.error]="isFieldInvalid('message')"
                 ></textarea>
@@ -402,7 +404,7 @@ export class ContactComponent {
   contactForm: FormGroup;
   isSubmitting = false;
   formSubmitted = false;
-  
+
   faEnvelope = faEnvelope;
   faMapMarkerAlt = faMapMarkerAlt;
   faPhone = faPhone;
@@ -411,32 +413,41 @@ export class ContactComponent {
   faWhatsapp = faWhatsapp;
   faPaperPlane = faPaperPlane;
   faCheckCircle = faCheckCircle;
-  
-  constructor(private fb: FormBuilder) {
+
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
+      Name: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      Subject: ['', Validators.required],
+      Message: ['', Validators.required]
     });
   }
-  
+
   isFieldInvalid(fieldName: string): boolean {
     const field = this.contactForm.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
-  
+
   onSubmit(): void {
     if (this.contactForm.valid) {
       this.isSubmitting = true;
-      
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.formSubmitted = true;
-        this.contactForm.reset();
-      }, 1500);
+
+      const formData = this.contactForm.value;
+
+      this.http.post('https://mohanad-production.up.railway.app/api/send', formData).subscribe({
+        next: (response) => {
+          this.isSubmitting = false;
+          this.formSubmitted = true;
+          this.contactForm.reset();
+        },
+        error: (error) => {
+          this.isSubmitting = false;
+          console.error('Error sending message:', error);
+        }
+      });
     } else {
       this.contactForm.markAllAsTouched();
     }
   }
+
 }
