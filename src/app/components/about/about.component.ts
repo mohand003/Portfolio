@@ -38,7 +38,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
               </div>
               <div class="info-group">
                 <span class="info-label">Email:</span>
-                <span class="info-value">mohammedmohanad485&#64;gmail.com</span>
+                <span class="info-value">eng.mohanadmohammedmm&#64;gmail.com</span>
               </div>
               <div class="info-group">
                 <span class="info-label">Location:</span>

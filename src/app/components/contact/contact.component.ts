@@ -32,7 +32,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                 </div>
                 <div class="info-content">
                   <h4>Email</h4>
-                  <p><a href="mailto:alex&#64;example.com">mohammedmohanad485&#64;gmail.com</a></p>
+                  <p><a href="mailto:alex&#64;example.com">eng.mohanadmohammedmm&#64;gmail.com</a></p>
                 </div>
               </div>
               
