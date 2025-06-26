@@ -270,7 +270,7 @@ export class ProjectsComponent {
       id: 1,
       title: 'E-Commerce Dashboard',
       description: 'A comprehensive admin dashboard for an e-commerce platform with real-time analytics, inventory management, and order processing.',
-      image: 'https://unctad.org/sites/default/files/2021-03/2021-03-15_eCommerceCOVID19report-1-1220x675px.jpg',
+      image: 'https://img.freepik.com/free-vector/ecommerce-web-page-concept-illustration_114360-8204.jpg',
       tech: ['Angular', 'TypeScript', 'RxJS', 'Chart.js', 'Firebase'],
       link: 'https://nile-mart-tan.vercel.app/',
       github: 'https://github.com/mohand003/Nile-Mart.git',
@@ -294,6 +294,16 @@ export class ProjectsComponent {
       tech: ['Angular', 'TypeScript', 'Angular Material'],
       link: 'https://mohanad-portfolio-delta.vercel.app/',
       github: 'https://github.com/mohand003/Portfolio.git',
+      featured: false
+    },
+    {
+      id: 4,
+      title: 'SuperMart',
+      description: 'A modern grocery shopping app featuring inventory tracking, a customer loyalty program, and contactless checkout, enhanced with a full admin dashboard for complete website control.',
+      image: 'https://img.freepik.com/free-vector/supermarket-logo-template-with-shopping-cart_23-2148470292.jpg',
+      tech: ['Angular', 'TypeScript', 'Firebase'],
+      link: 'https://supermart-app.vercel.app/',
+      github: 'https://github.com/mohand003/SuperMart.git',
       featured: false
     },
   ];

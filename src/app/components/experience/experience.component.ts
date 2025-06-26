@@ -211,7 +211,7 @@ interface Experience {
         padding-left: 0;
       }
       
-      .timeline-item:nth-child(odd) .achievements li::before {
+      .timeline-item:nth-child(even) .achievements li::before {
         right: -20px;
         left: auto;
       }
@@ -247,6 +247,18 @@ export class ExperienceComponent {
         'Completing learn how to use figma and get the design details from it.',
         'Completing courses in Angular framework.',
         'Completing my first angular project(Nile Mart{E-Commerce}).',
+      ]
+    },
+    {
+      company: 'Saiket Systems',
+      role: 'Front-End internship',
+      period: 'jun 2025 - jul 2025',
+      description: 'Learning to focus on mastering core web technologies (HTML, CSS, JavaScript).',
+      achievements: [
+        'Completed a one-month front-end internship focused on real-world UI challenges.',
+        'Developed and delivered 6 diverse front-end tasks within set deadlines.',
+        'Applied HTML, CSS, and JavaScript skills to practical projects.',
+        'All tasks were completed and submitted online successfully.',
       ]
     },
   ];
