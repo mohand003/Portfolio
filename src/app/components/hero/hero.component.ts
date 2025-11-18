@@ -80,7 +80,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://res.cloudinary.com/df9rcxvpg/image/upload/v1745410910/Portfolio/Background.jpg');
+      background-image: url('https://res.cloudinary.com/df9rcxvpg/image/upload/v1763509881/profile-bg_mxy3sj.png');
       background-size: cover;
       background-position: center;
       filter: blur(8px) brightness(0.4);
@@ -173,7 +173,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
     .profile-image {
       width: 100%;
       height: 100%;
-      background-image: url('https://res.cloudinary.com/df9rcxvpg/image/upload/v1745410910/Portfolio/Background.jpg');
+      background-image: url('https://res.cloudinary.com/df9rcxvpg/image/upload/v1763509773/Portfolio/Background.png');
       background-size: cover;
       background-position: center;
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
