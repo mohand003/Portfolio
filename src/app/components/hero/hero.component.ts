@@ -13,10 +13,10 @@ import { animate, style, transition, trigger } from '@angular/animations';
         <div class="hero-content">
           <div class="hero-text" @fadeInUp>
             <p class="intro-text">Hello, I'm</p>
-            <h1 class="name">Mohanad Mohammed</h1>
-            <h2 class="title">Front-End Developer</h2>
+            <h1 class="name">Mohanad Mohammed Mostafa</h1>
+            <h2 class="title">Frontend Developer</h2>
             <p class="description">
-              I craft elegant, user-centered web experiences with modern JavaScript frameworks.
+              Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript.
             </p>
             <div class="cta-buttons">
               <a href="#projects" class="btn btn-primary">View My Work</a>

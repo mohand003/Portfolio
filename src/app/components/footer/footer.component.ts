@@ -24,6 +24,8 @@ import { CommonModule } from '@angular/common';
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -40,7 +42,7 @@ import { CommonModule } from '@angular/common';
         </div>
         
         <div class="footer-bottom">
-          <p>&copy; {{ currentYear }} Mohanad Mohammed. All rights reserved.</p>
+          <p>&copy; {{ currentYear }} Mohanad Mohammed Mostafa. All rights reserved.</p>
           <p>
             <button class="back-to-top" (click)="scrollToTop()" aria-label="Back to top">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

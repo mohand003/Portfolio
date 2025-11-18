@@ -22,6 +22,7 @@ import { ThemeService } from '../../services/theme.service';
             <a href="#skills" (click)="closeMenu()">Skills</a>
             <a href="#projects" (click)="closeMenu()">Projects</a>
             <a href="#experience" (click)="closeMenu()">Experience</a>
+            <a href="#education" (click)="closeMenu()">Education</a>
             <a href="#contact" (click)="closeMenu()">Contact</a>
           </div>
           

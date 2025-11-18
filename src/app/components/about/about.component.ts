@@ -22,19 +22,15 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
           </div>
           
           <div class="about-text" @fadeInRight>
-            <h3>Front-End Developer (Angular)</h3>
+            <h3>Frontend Developer (Angular)</h3>
             <p>
-              Front-end developer with strong experience in building responsive, user-friendly web apps using Angular, TypeScript, SCSS, and modern UI frameworks. Passionate about clean architecture and blending functionality with design. Worked on AI-driven UI tools and e-commerce platforms, showcasing both technical skills and creativity.
-            </p>
-            <p>
-              I believe that great code is as much about function as it is about form. Clean architecture, 
-              maintainable patterns, and meticulous attention to detail are the hallmarks of my work.
+              Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript. Distinguished by exceptional design intuition and creative vision - able to conceptualize and build pixel-perfect, visually stunning interfaces entirely from scratch without requiring external design references or mockups.
             </p>
             
             <div class="personal-info">
               <div class="info-group">
                 <span class="info-label">Name:</span>
-                <span class="info-value">Mohanad Mohammed</span>
+                <span class="info-value">Mohanad Mohammed Mostafa</span>
               </div>
               <div class="info-group">
                 <span class="info-label">Email:</span>

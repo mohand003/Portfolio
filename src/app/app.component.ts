@@ -7,6 +7,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ExperienceComponent } from './components/experience/experience.component';
+import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ThemeService } from './services/theme.service';
@@ -24,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SkillsComponent,
     ProjectsComponent,
     ExperienceComponent,
+    EducationComponent,
     ContactComponent,
     FooterComponent,
     FontAwesomeModule
@@ -38,6 +40,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
           <app-skills></app-skills>
           <app-projects></app-projects>
           <app-experience></app-experience>
+          <app-education></app-education>
           <app-contact></app-contact>
           <router-outlet></router-outlet>
         </div>

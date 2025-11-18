@@ -52,7 +52,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                 </div>
                 <div class="info-content">
                   <h4>Phone</h4>
-                  <p><a href="tel:+11234567890">+20 1273908886</a></p>
+                  <p><a href="tel:01273908886">01273908886</a></p>
                 </div>
               </div>
             </div>

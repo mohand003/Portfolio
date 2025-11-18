@@ -240,7 +240,7 @@ export class SkillsComponent {
       name: 'TypeScript',
       level: 85,
       color: '#3178C6',
-      icon: this.faJs // Using JS icon for TypeScript as there's no specific TS icon
+      icon: this.faJs
     },
     {
       name: 'Angular',
@@ -254,6 +254,18 @@ export class SkillsComponent {
       color: '#CC6699',
       icon: this.faSass
     },
+    {
+      name: 'React',
+      level: 80,
+      color: '#61DAFB',
+      icon: this.faJs
+    },
+    {
+      name: 'Next.js',
+      level: 75,
+      color: '#000000',
+      icon: this.faJs
+    },
   ];
 
   toolsSkills: Skill[] = [
@@ -264,16 +276,28 @@ export class SkillsComponent {
       icon: this.faGitAlt
     },
     {
-      name: 'Docker',
+      name: 'Node.js',
       level: 75,
-      color: '#2496ED',
-      icon: this.faDocker
+      color: '#339933',
+      icon: this.faNodeJs
     },
     {
-      name: 'Webpack',
-      level: 70,
-      color: '#8DD6F9',
-      icon: this.faJs // Using JS icon for Webpack as there's no specific Webpack icon
+      name: 'C++',
+      level: 80,
+      color: '#00599C',
+      icon: this.faJs
+    },
+    {
+      name: 'Bootstrap',
+      level: 85,
+      color: '#7952B3',
+      icon: this.faJs
+    },
+    {
+      name: 'Tailwind',
+      level: 85,
+      color: '#38B2AC',
+      icon: this.faJs
     },
     {
       name: 'Figma',
@@ -282,10 +306,22 @@ export class SkillsComponent {
       icon: this.faFigma
     },
     {
-      name: 'Node.js',
+      name: 'Supabase',
+      level: 70,
+      color: '#3ECF8E',
+      icon: this.faJs
+    },
+    {
+      name: 'RxJS',
+      level: 80,
+      color: '#B7178C',
+      icon: this.faJs
+    },
+    {
+      name: 'jQuery',
       level: 75,
-      color: '#339933',
-      icon: this.faNodeJs
+      color: '#0769AD',
+      icon: this.faJs
     }
   ];
 }

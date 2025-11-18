@@ -2,44 +2,40 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
 
-interface Experience {
-  company: string;
-  role: string;
+interface Education {
+  institution: string;
+  degree: string;
   period: string;
-  description: string;
-  achievements: string[];
+  highlights: string[];
 }
 
 @Component({
-  selector: 'app-experience',
+  selector: 'app-education',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section id="experience" class="section">
+    <section id="education" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>Work Experience</h2>
+        <h2 class="section-title" @fadeIn>Education</h2>
         
         <div class="timeline" @fadeIn>
-          @for (experience of experiences; track experience.company; let i = $index) {
-            <div class="timeline-item" [class.active]="selectedExperience === i" (click)="selectExperience(i)">
-              <div class="timeline-marker" [class.active]="selectedExperience === i"></div>
-              <div class="timeline-content" @fadeInUp>
-                <div class="timeline-header">
-                  <h3 class="timeline-title">{{ experience.role }}</h3>
-                  <span class="timeline-company">{{ experience.company }}</span>
-                  <span class="timeline-period">{{ experience.period }}</span>
-                </div>
-                <div class="timeline-body" [class.expanded]="selectedExperience === i">
-                  <p>{{ experience.description }}</p>
-                  <ul class="achievements">
-                    @for (achievement of experience.achievements; track achievement) {
-                      <li>{{ achievement }}</li>
-                    }
-                  </ul>
-                </div>
+          <div class="timeline-item" [class.active]="selectedEducation === 0" (click)="selectEducation(0)">
+            <div class="timeline-marker" [class.active]="selectedEducation === 0"></div>
+            <div class="timeline-content" @fadeInUp>
+              <div class="timeline-header">
+                <h3 class="timeline-title">{{ education.degree }}</h3>
+                <span class="timeline-company">{{ education.institution }}</span>
+                <span class="timeline-period">{{ education.period }}</span>
+              </div>
+              <div class="timeline-body" [class.expanded]="selectedEducation === 0">
+                <ul class="achievements">
+                  @for (highlight of education.highlights; track highlight) {
+                    <li>{{ highlight }}</li>
+                  }
+                </ul>
               </div>
             </div>
-          }
+          </div>
         </div>
       </div>
     </section>
@@ -144,11 +140,6 @@ interface Experience {
       max-height: 500px;
     }
     
-    .timeline-body p {
-      margin-bottom: var(--space-3);
-      color: var(--text-secondary);
-    }
-    
     .achievements {
       padding-left: var(--space-4);
     }
@@ -182,13 +173,7 @@ interface Experience {
         padding-bottom: var(--space-6);
       }
       
-      .timeline-item:nth-child(odd) {
-        padding-right: 50%;
-        padding-left: var(--space-4);
-        text-align: right;
-      }
-      
-      .timeline-item:nth-child(even) {
+      .timeline-item {
         padding-left: 50%;
         padding-right: var(--space-4);
       }
@@ -198,22 +183,8 @@ interface Experience {
         margin-left: -10px;
       }
       
-      .timeline-item:nth-child(odd) .timeline-content {
-        margin-right: var(--space-4);
-      }
-      
-      .timeline-item:nth-child(even) .timeline-content {
+      .timeline-item .timeline-content {
         margin-left: var(--space-4);
-      }
-      
-      .timeline-item:nth-child(odd) .achievements {
-        padding-right: var(--space-4);
-        padding-left: 0;
-      }
-      
-      .timeline-item:nth-child(even) .achievements li::before {
-        right: -20px;
-        left: auto;
       }
     }
   `,
@@ -232,37 +203,22 @@ interface Experience {
     ]),
   ],
 })
-export class ExperienceComponent {
-  selectedExperience = 0;
+export class EducationComponent {
+  selectedEducation = 0;
   
-  experiences: Experience[] = [
-    {
-      company: 'Adaplo',
-      role: 'Frontend Developer',
-      period: 'Sept 2024 – Present',
-      description: 'Developing and maintaining responsive web applications using React framework.',
-      achievements: [
-        'Developing and maintaining responsive web applications using React framework',
-        'Implementing modern UI/UX designs with TypeScript, HTML5, and CSS3',
-        'Collaborating with cross-functional teams to deliver high-quality frontend solutions',
-        'Writing clean, maintainable code following best practices and coding standards',
-      ]
-    },
-    {
-      company: 'Saiket Systems',
-      role: 'Frontend Intern',
-      period: 'June 2025 – July 2025',
-      description: 'Completed a one-month frontend internship focused on real-world UI challenges.',
-      achievements: [
-        'Completed a one-month frontend internship focused on real-world UI challenges',
-        'Developed and delivered 6 diverse frontend tasks within set deadlines',
-        'Applied HTML, CSS, and JavaScript skills to practical projects',
-        'Demonstrated strong problem-solving abilities and attention to detail in responsive design implementation',
-      ]
-    },
-  ];
+  education: Education = {
+    institution: 'Faculty of Computers and Information, Zagazig University',
+    degree: 'Bachelor of Computer Science',
+    period: '2021 – 2025',
+    highlights: [
+      'Fresh Graduate from Computer Science program',
+      'Strong foundation in data structures and algorithms',
+      'Comprehensive study of C++ and Object-Oriented Programming',
+    ]
+  };
   
-  selectExperience(index: number): void {
-    this.selectedExperience = index;
+  selectEducation(index: number): void {
+    this.selectedEducation = index;
   }
 }
+
