@@ -239,7 +239,7 @@ export class ExperienceComponent {
     {
       company: 'Adaplo',
       role: 'Frontend Developer',
-      period: 'Sept 2024 – Present',
+      period: 'Sept 2025 – Present',
       description: 'Developing and maintaining responsive web applications using React framework.',
       achievements: [
         'Developing and maintaining responsive web applications using React framework',
