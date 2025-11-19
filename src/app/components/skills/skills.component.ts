@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHtml5, faCss3Alt, faJs, faAngular, faSass, faGitAlt, faDocker, faNodeJs, faFigma } from '@fortawesome/free-brands-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
@@ -15,29 +16,26 @@ interface Skill {
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, TranslateModule, FontAwesomeModule],
   template: `
     <section id="skills" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>My Skills</h2>
+        <h2 class="section-title" @fadeIn>{{ 'skills.title' | translate }}</h2>
         
         <div class="skills-content">
           <div class="skills-text" @fadeInLeft>
-            <h3>Technical Expertise</h3>
+            <h3>{{ 'skills.subtitle' | translate }}</h3>
             <p>
-              With a strong foundation in web technologies and a passion for clean, efficient code, 
-              I've developed expertise in a range of tools and frameworks that allow me to build 
-              performant, accessible, and beautiful web applications.
+              {{ 'skills.description1' | translate }}
             </p>
             <p>
-              I'm constantly learning and experimenting with new technologies to stay ahead of industry trends 
-              and deliver cutting-edge solutions to complex problems.
+              {{ 'skills.description2' | translate }}
             </p>
           </div>
           
           <div class="skills-cards" @fadeInRight>
             <div class="skills-category">
-              <h4>Frontend Development</h4>
+              <h4>{{ 'skills.frontend' | translate }}</h4>
               <div class="skills-grid">
                 @for (skill of frontendSkills; track skill.name) {
                   <div class="skill-card" [style.--skill-color]="skill.color">
@@ -56,7 +54,7 @@ interface Skill {
             </div>
             
             <div class="skills-category">
-              <h4>Tools & Others</h4>
+              <h4>{{ 'skills.tools' | translate }}</h4>
               <div class="skills-grid">
                 @for (skill of toolsSkills; track skill.name) {
                   <div class="skill-card" [style.--skill-color]="skill.color">
@@ -111,6 +109,18 @@ interface Skill {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: var(--space-3);
     }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 576px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
     
     .skill-card {
       display: flex;
@@ -118,28 +128,15 @@ interface Skill {
       gap: var(--space-3);
       padding: var(--space-3);
       border-radius: 12px;
-      background-color: white;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      background-color: var(--surface);
+      box-shadow: 0 4px 12px var(--shadow-light);
       transition: all var(--transition-normal);
       border-left: 3px solid var(--skill-color, var(--color-primary-500));
     }
     
     .skill-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .dark-theme .skill-card {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-    
-    .skill-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .dark-theme .skill-card:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 20px var(--shadow-medium);
     }
     
     .skill-icon {

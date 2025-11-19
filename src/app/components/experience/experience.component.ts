@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Experience {
   company: string;
@@ -13,11 +14,11 @@ interface Experience {
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   template: `
     <section id="experience" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>Work Experience</h2>
+        <h2 class="section-title" @fadeIn>{{ 'experience.title' | translate }}</h2>
         
         <div class="timeline" @fadeIn>
           @for (experience of experiences; track experience.company; let i = $index) {
@@ -95,20 +96,16 @@ interface Experience {
     }
     
     .timeline-content {
-      background-color: white;
+      background-color: var(--surface);
       border-radius: 12px;
       padding: var(--space-4);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 16px var(--shadow-light);
       transition: all var(--transition-normal);
     }
     
     .timeline-item.active .timeline-content {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px var(--shadow-medium);
       transform: translateY(-5px);
-    }
-    
-    .dark-theme .timeline-item.active .timeline-content {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
     
     .timeline-header {

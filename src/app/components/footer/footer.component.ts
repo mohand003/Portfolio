@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   template: `
     <footer class="footer">
       <div class="container">
@@ -13,25 +14,25 @@ import { CommonModule } from '@angular/common';
             <a href="#">
               <img src="assets/2025042401150776.png" alt="Logo">
             </a>
-            <p>Front-End Developer specializing in modern JavaScript frameworks</p>
+            <p>{{ 'footer.description' | translate }}</p>
           </div>
           
           <div class="footer-links">
             <div class="footer-nav">
-              <h3>Navigation</h3>
+              <h3>{{ 'footer.navigation' | translate }}</h3>
               <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">{{ 'footer.home' | translate }}</a></li>
+                <li><a href="#about">{{ 'footer.about' | translate }}</a></li>
+                <li><a href="#skills">{{ 'footer.skills' | translate }}</a></li>
+                <li><a href="#projects">{{ 'footer.projects' | translate }}</a></li>
+                <li><a href="#experience">{{ 'footer.experience' | translate }}</a></li>
+                <li><a href="#education">{{ 'footer.education' | translate }}</a></li>
+                <li><a href="#contact">{{ 'footer.contact' | translate }}</a></li>
               </ul>
             </div>
             
             <div class="footer-social">
-              <h3>Social</h3>
+              <h3>{{ 'footer.social' | translate }}</h3>
               <ul>
                 <li><a href="https://github.com/mohand003" target="_blank">GitHub</a></li>
                 <li><a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank">LinkedIn</a></li>
@@ -42,7 +43,7 @@ import { CommonModule } from '@angular/common';
         </div>
         
         <div class="footer-bottom">
-          <p>&copy; {{ currentYear }} Mohanad Mohammed Mostafa. All rights reserved.</p>
+          <p>&copy; {{ currentYear }} Mohanad Mohammed Mostafa. {{ 'footer.rights' | translate }}</p>
           <p>
             <button class="back-to-top" (click)="scrollToTop()" aria-label="Back to top">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -158,6 +159,19 @@ import { CommonModule } from '@angular/common';
     @media (min-width: 768px) {
       .footer-content {
         grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .footer-links {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
       }
     }
   `

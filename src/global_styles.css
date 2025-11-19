@@ -122,22 +122,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   letter-spacing: -0.02em;
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
   letter-spacing: -0.01em;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
 }
 
 p {
@@ -170,8 +170,26 @@ img {
   padding: 0 var(--space-3);
 }
 
+@media (max-width: 576px) {
+  .container {
+    padding: 0 var(--space-2);
+  }
+}
+
 .section {
   padding: var(--space-7) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-5) 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: var(--space-4) 0;
+  }
 }
 
 .section-title {
@@ -205,13 +223,14 @@ img {
 
 .btn-primary {
   background-color: var(--color-primary-500);
-  color: white;
+  color: white !important;
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-600);
+  color: white !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
 .btn-outline {
@@ -222,9 +241,9 @@ img {
 
 .btn-outline:hover {
   background-color: var(--color-primary-500);
-  color: white;
+  color: white !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
 /* Utility classes */
@@ -354,4 +373,54 @@ img {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+[dir="rtl"] .section-title::after {
+  margin: var(--space-2) auto 0;
+}
+
+/* RTL adjustments for common patterns */
+[dir="rtl"] .btn {
+  flex-direction: row-reverse;
+}
+
+/* Enhanced Responsive Typography */
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .btn {
+    font-size: 0.875rem;
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* Responsive spacing utilities */
+@media (max-width: 768px) {
+  .mb-5 { margin-bottom: var(--space-4); }
+  .mt-5 { margin-top: var(--space-4); }
+}
+
+@media (max-width: 576px) {
+  .mb-4 { margin-bottom: var(--space-3); }
+  .mt-4 { margin-top: var(--space-3); }
+  .mb-5 { margin-bottom: var(--space-3); }
+  .mt-5 { margin-top: var(--space-3); }
 }

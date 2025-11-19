@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { Project } from '../../models/project.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -10,11 +11,11 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ProjectCardComponent, FontAwesomeModule],
+  imports: [CommonModule, TranslateModule, ProjectCardComponent, FontAwesomeModule],
   template: `
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>My Projects</h2>
+        <h2 class="section-title" @fadeIn>{{ 'projects.title' | translate }}</h2>
         
         <div class="projects-tabs" @fadeIn>
           <button 
@@ -22,14 +23,14 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
             [class.active]="activeFilter === 'all'"
             (click)="filterProjects('all')"
           >
-            All Projects
+            {{ 'projects.allProjects' | translate }}
           </button>
         </div>
         
         <div class="featured-project" *ngIf="featuredProject" @fadeInUp>
           <div class="featured-content">
             <div class="featured-text">
-              <span class="featured-label">Featured Project</span>
+              <span class="featured-label">{{ 'projects.featured' | translate }}</span>
               <h3>{{ featuredProject.title }}</h3>
               <p>{{ featuredProject.description }}</p>
               <div class="tech-stack">
@@ -40,20 +41,20 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
               <div class="project-links">
                 @if (featuredProject.github) {
                   <a [href]="featuredProject.github" target="_blank" class="project-link github">
-                    <fa-icon [icon]="faGithub"></fa-icon>
-                    Code
+                    <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
+                    {{ 'projects.code' | translate }}
                   </a>
                 }
                 @if (featuredProject.link) {
                   <a [href]="featuredProject.link" target="_blank" class="project-link live">
-                    <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
-                    Live Demo
+                    <fa-icon [icon]="faExternalLinkAlt" [size]="'lg'"></fa-icon>
+                    {{ 'projects.liveDemo' | translate }}
                   </a>
                 }
                 @if (featuredProject.caseStudy) {
                   <a href="#" class="project-link case-study">
-                    <fa-icon [icon]="faBook"></fa-icon>
-                    Case Study
+                    <fa-icon [icon]="faBook" [size]="'lg'"></fa-icon>
+                    {{ 'projects.caseStudy' | translate }}
                   </a>
                 }
               </div>
@@ -98,9 +99,14 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
       background-color: var(--color-neutral-100);
     }
     
+    .dark-theme .tab-btn:hover {
+      background-color: var(--color-neutral-700);
+    }
+    
+    
     .tab-btn.active {
       background-color: var(--color-primary-500);
-      color: white;
+      color: white !important;
     }
     
     .featured-project {
@@ -112,20 +118,16 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
       grid-template-columns: 1fr;
       gap: var(--space-4);
       align-items: center;
-      background-color: white;
+      background-color: var(--surface);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 30px var(--shadow-light);
       transition: all var(--transition-normal);
     }
     
     .featured-content:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .dark-theme .featured-content {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 16px 40px var(--shadow-medium);
     }
     
     .featured-text {
@@ -145,16 +147,19 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
     
     .dark-theme .featured-label {
       background-color: var(--color-highlight-900);
+      color: var(--color-highlight-300);
     }
     
     .featured-text h3 {
       font-size: 1.75rem;
       margin-bottom: var(--space-2);
+      color: var(--text-primary);
     }
     
     .featured-text p {
       margin-bottom: var(--space-3);
       color: var(--text-secondary);
+      line-height: 1.7;
     }
     
     .featured-image {
@@ -193,10 +198,13 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
       color: var(--text-secondary);
       border-radius: 4px;
       font-size: 0.875rem;
+      font-weight: 500;
     }
     
+    :host-context(.dark-theme) .tech-tag,
     .dark-theme .tech-tag {
-      background-color: var(--color-neutral-700);
+      background-color: var(--color-primary-500) !important;
+      color: white !important;
     }
     
     .project-links {
@@ -216,6 +224,25 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
     
     .project-link:hover {
       color: var(--color-primary-500);
+    }
+    
+    .dark-theme .project-link {
+      color: var(--text-primary);
+    }
+    
+    .dark-theme .project-link:hover {
+      color: var(--color-primary-400);
+    }
+    
+    .project-link fa-icon {
+      color: inherit !important;
+      font-size: 1.25rem;
+    }
+    
+    .project-link fa-icon svg {
+      fill: currentColor !important;
+      width: 1.25rem !important;
+      height: 1.25rem !important;
     }
     
     .project-link svg {

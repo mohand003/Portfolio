@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,7 +11,10 @@ import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ThemeService } from './services/theme.service';
+import { LanguageService } from './services/language.service';
+import { TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +34,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   template: `
-    <div class="light-theme">
+    <div>
       <app-header></app-header>
       <main class="main-container">
         <div class="content-wrapper">
@@ -71,11 +74,38 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     }
   `
 })
-export class AppComponent {
-  constructor(public themeService: ThemeService) {}
+export class AppComponent implements OnInit, OnDestroy {
+  private subscriptions = new Subscription();
+
+  constructor(
+    public themeService: ThemeService,
+    private languageService: LanguageService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit() {
-    document.documentElement.classList.add('light-theme');
-    document.documentElement.classList.remove('dark-theme');
+    // Initialize language
+    const currentLang = this.languageService.getCurrentLanguage();
+    this.translateService.setDefaultLang('en');
+    this.translateService.use(currentLang);
+    
+    // Subscribe to language changes
+    this.subscriptions.add(
+      this.languageService.currentLanguage$.subscribe(lang => {
+        this.translateService.use(lang);
+      })
+    );
+
+    // Theme is already initialized in ThemeService constructor
+    // Subscribe to theme changes to ensure sync
+    this.subscriptions.add(
+      this.themeService.darkTheme$.subscribe(isDark => {
+        // Theme is already applied by ThemeService
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Education {
   institution: string;
@@ -12,11 +13,11 @@ interface Education {
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   template: `
     <section id="education" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>Education</h2>
+        <h2 class="section-title" @fadeIn>{{ 'education.title' | translate }}</h2>
         
         <div class="timeline" @fadeIn>
           <div class="timeline-item" [class.active]="selectedEducation === 0" (click)="selectEducation(0)">
@@ -91,20 +92,16 @@ interface Education {
     }
     
     .timeline-content {
-      background-color: white;
+      background-color: var(--surface);
       border-radius: 12px;
       padding: var(--space-4);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 16px var(--shadow-light);
       transition: all var(--transition-normal);
     }
     
     .timeline-item.active .timeline-content {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px var(--shadow-medium);
       transform: translateY(-5px);
-    }
-    
-    .dark-theme .timeline-item.active .timeline-content {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
     
     .timeline-header {

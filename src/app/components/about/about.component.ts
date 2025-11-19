@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +9,11 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, TranslateModule, FontAwesomeModule],
   template: `
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>About Me</h2>
+        <h2 class="section-title" @fadeIn>{{ 'about.title' | translate }}</h2>
         
         <div class="about-content">
           <div class="about-image" @fadeInLeft>
@@ -22,46 +23,46 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
           </div>
           
           <div class="about-text" @fadeInRight>
-            <h3>Frontend Developer (Angular)</h3>
+            <h3>{{ 'about.subtitle' | translate }}</h3>
             <p>
-              Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript. Distinguished by exceptional design intuition and creative vision - able to conceptualize and build pixel-perfect, visually stunning interfaces entirely from scratch without requiring external design references or mockups.
+              {{ 'about.description' | translate }}
             </p>
             
             <div class="personal-info">
               <div class="info-group">
-                <span class="info-label">Name:</span>
+                <span class="info-label">{{ 'about.name' | translate }}</span>
                 <span class="info-value">Mohanad Mohammed Mostafa</span>
               </div>
               <div class="info-group">
-                <span class="info-label">Email:</span>
+                <span class="info-label">{{ 'about.email' | translate }}</span>
                 <span class="info-value">eng.mohanadmohammedmm&#64;gmail.com</span>
               </div>
               <div class="info-group">
-                <span class="info-label">Location:</span>
+                <span class="info-label">{{ 'about.location' | translate }}</span>
                 <span class="info-value">Maadi, Cairo</span>
               </div>
               <div class="info-group">
-                <span class="info-label">Availability:</span>
-                <span class="info-value available">Freelance</span>
-                <span class="info-value available">Full Time/Part Time</span>
+                <span class="info-label">{{ 'about.availability' | translate }}</span>
+                <span class="info-value available">{{ 'about.freelance' | translate }}</span>
+                <span class="info-value available">{{ 'about.fullTime' | translate }}</span>
               </div>
             </div>
             
             <div class="social-links">
               <a href="https://github.com/mohand003" target="_blank" class="social-link" aria-label="GitHub">
-                <fa-icon [icon]="faGithub"></fa-icon>
+                <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
               </a>
               <a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" class="social-link" aria-label="LinkedIn">
-                <fa-icon [icon]="faLinkedin"></fa-icon>
+                <fa-icon [icon]="faLinkedin" [size]="'lg'"></fa-icon>
               </a>
               <a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" class="social-link" aria-label="WhatsApp">
-                <fa-icon [icon]="faWhatsapp"></fa-icon>
+                <fa-icon [icon]="faWhatsapp" [size]="'lg'"></fa-icon>
               </a>
             </div>
             
               <a [href]="'assets/Mohanad_CV.pdf'" class="btn btn-primary">
                 <fa-icon [icon]="faDownload"></fa-icon>
-                  Download Resume
+                  {{ 'about.downloadResume' | translate }}
               </a>
 
 
@@ -139,10 +140,15 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       font-size: clamp(1.25rem, 5vw, 1.5rem);
     }
     
+    .dark-theme .about-text h3 {
+      color: var(--color-primary-400);
+    }
+    
     .about-text p {
       margin-bottom: var(--space-3);
       font-size: 1.125rem;
       line-height: 1.7;
+      color: var(--text-secondary);
     }
     
     .personal-info {
@@ -163,6 +169,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
     .info-label {
       font-weight: 600;
       min-width: 100px;
+      color: var(--text-primary);
     }
     
     .info-value {
@@ -199,19 +206,45 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 50px;
+      height: 50px;
       border-radius: 12px;
-      background-color: var(--color-neutral-100);
+      background-color: var(--color-primary-500);
       color: var(--text-primary);
       transition: all var(--transition-normal);
+    }
+    
+    .dark-theme .social-link {
+      background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
+      color: white;
+      border: 1px solid var(--color-primary-500);
+      box-shadow: 0 2px 8px rgba(10, 36, 99, 0.3);
+    }
+    
+    .social-link fa-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white !important;
+      font-size: 1.5rem;
+    }
+    
+    .social-link fa-icon svg {
+      fill: white !important;
+      width: 1.5rem !important;
+      height: 1.5rem !important;
     }
     
     .social-link:hover {
       background-color: var(--color-primary-500);
       color: white;
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 16px var(--shadow-medium);
+    }
+    
+    .dark-theme .social-link:hover {
+      background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+      box-shadow: 0 6px 20px rgba(10, 36, 99, 0.5);
     }
     
     .btn {
@@ -222,9 +255,14 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
       white-space: normal;
     }
     
-    .btn svg {
+    .btn svg, .btn fa-icon {
       margin-right: var(--space-1);
       flex-shrink: 0;
+      color: inherit;
+    }
+    
+    .btn-primary fa-icon {
+      color: white !important;
     }
     
     @media (max-width: 480px) {

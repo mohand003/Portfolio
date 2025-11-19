@@ -17,17 +17,17 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
           <div class="card-actions">
             @if (project.github) {
               <a [href]="project.github" target="_blank" class="card-action github" aria-label="View GitHub repository">
-                <fa-icon [icon]="faGithub"></fa-icon>
+                <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
               </a>
             }
             @if (project.link) {
               <a [href]="project.link" target="_blank" class="card-action live" aria-label="View live demo">
-                <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
+                <fa-icon [icon]="faExternalLinkAlt" [size]="'lg'"></fa-icon>
               </a>
             }
             @if (project.caseStudy) {
               <a href="#" class="card-action case-study" aria-label="View case study">
-                <fa-icon [icon]="faBook"></fa-icon>
+                <fa-icon [icon]="faBook" [size]="'lg'"></fa-icon>
               </a>
             }
           </div>
@@ -60,16 +60,12 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
     }
     
     .dark-theme .project-card {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 24px var(--shadow-light);
     }
     
     .project-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-    }
-    
-    .dark-theme .project-card:hover {
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 16px 32px var(--shadow-medium);
     }
     
     .card-image {
@@ -121,32 +117,66 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: white;
-      color: var(--color-neutral-900);
+      width: 45px;
+      height: 45px;
+      background-color: var(--surface);
+      color: var(--text-primary);
       border-radius: 50%;
       transition: all var(--transition-normal);
     }
     
+    .dark-theme .card-action {
+      background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-900));
+      border: 1px solid var(--color-primary-600);
+      color: white;
+    }
+    
+    .dark-theme .card-action fa-icon {
+      color: white !important;
+    }
+    
+    .dark-theme .card-action fa-icon svg {
+      fill: white !important;
+    }
+    
+    .card-action fa-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    
+    .card-action fa-icon svg {
+      width: 1.25rem !important;
+      height: 1.25rem !important;
+    }
+    
     .card-action:hover {
       transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px var(--shadow-medium);
+    }
+    
+    .card-action fa-icon {
+      color: inherit !important;
+    }
+    
+    .card-action fa-icon svg {
+      fill: currentColor !important;
     }
     
     .card-action.github:hover {
       background-color: #333;
-      color: white;
+      color: white !important;
     }
     
     .card-action.live:hover {
       background-color: var(--color-primary-500);
-      color: white;
+      color: white !important;
     }
     
     .card-action.case-study:hover {
       background-color: var(--color-highlight-500);
-      color: white;
+      color: white !important;
     }
     
     .card-content {
@@ -182,10 +212,13 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
       color: var(--text-secondary);
       border-radius: 4px;
       font-size: 0.75rem;
+      font-weight: 500;
     }
     
+    :host-context(.dark-theme) .tech-tag,
     .dark-theme .tech-tag {
-      background-color: var(--color-neutral-700);
+      background-color: var(--color-primary-500) !important;
+      color: white !important;
     }
     
     .tech-more {

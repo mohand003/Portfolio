@@ -1,11 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
+import { LanguageService } from '../../services/language.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, FontAwesomeModule],
   template: `
     <header [class.scrolled]="scrolled" class="dark-header">
       <div class="container">
@@ -18,15 +22,30 @@ import { ThemeService } from '../../services/theme.service';
           </div>
           
           <div class="nav-links" [class.active]="menuOpen">
-            <a href="#about" (click)="closeMenu()">About</a>
-            <a href="#skills" (click)="closeMenu()">Skills</a>
-            <a href="#projects" (click)="closeMenu()">Projects</a>
-            <a href="#experience" (click)="closeMenu()">Experience</a>
-            <a href="#education" (click)="closeMenu()">Education</a>
-            <a href="#contact" (click)="closeMenu()">Contact</a>
+            <a href="#about" (click)="closeMenu()">{{ 'nav.about' | translate }}</a>
+            <a href="#skills" (click)="closeMenu()">{{ 'nav.skills' | translate }}</a>
+            <a href="#projects" (click)="closeMenu()">{{ 'nav.projects' | translate }}</a>
+            <a href="#experience" (click)="closeMenu()">{{ 'nav.experience' | translate }}</a>
+            <a href="#education" (click)="closeMenu()">{{ 'nav.education' | translate }}</a>
+            <a href="#contact" (click)="closeMenu()">{{ 'nav.contact' | translate }}</a>
+            <div class="header-controls">
+              <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="(isDarkTheme() ? 'Switch to light theme' : 'Switch to dark theme')">
+                <fa-icon [icon]="isDarkTheme() ? faSun : faMoon"></fa-icon>
+              </button>
+              <button class="language-toggle" (click)="toggleLanguage()" [attr.aria-label]="('Toggle language')">
+                {{ currentLanguage === 'en' ? 'AR' : 'EN' }}
+              </button>
+            </div>
           </div>
           
-          <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen" aria-controls="primary-navigation">
+          <div class="header-controls-mobile">
+            <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="(isDarkTheme() ? 'Switch to light theme' : 'Switch to dark theme')">
+              <fa-icon [icon]="isDarkTheme() ? faSun : faMoon"></fa-icon>
+            </button>
+            <button class="language-toggle" (click)="toggleLanguage()" [attr.aria-label]="('Toggle language')">
+              {{ currentLanguage === 'en' ? 'AR' : 'EN' }}
+            </button>
+            <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen" aria-controls="primary-navigation">
             <span class="sr-only">Menu</span>
             <div class="hamburger" [class.active]="menuOpen">
               <span></span>
@@ -34,6 +53,7 @@ import { ThemeService } from '../../services/theme.service';
               <span></span>
             </div>
           </button>
+          </div>
         </nav>
       </div>
     </header>
@@ -48,36 +68,51 @@ import { ThemeService } from '../../services/theme.service';
       padding: var(--space-3) 0;
       transition: all var(--transition-normal);
       background-color: transparent;
-      color: var(--color-neutral-100);
+      color: var(--text-primary);
     }
 
     header.scrolled {
-      background-color: var(--color-neutral-900);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      background-color: var(--surface);
+      box-shadow: 0 4px 20px var(--shadow-medium);
       padding: var(--space-2) 0;
+    }
+    
+    .dark-theme header.scrolled {
+      background-color: var(--color-neutral-800);
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: var(--space-2);
+    }
+
+    .logo {
+      flex-shrink: 0;
+      min-width: 0;
     }
 
     .logo a {
       font-family: var(--font-heading);
       font-size: 1.75rem;
       font-weight: 700;
-      color: var(--color-neutral-100);
+      color: var(--color-primary-300);
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+    
+    .dark-theme .logo a {
+      color: var(--text-primary);
     }
 
     .logo img {
       width: 5rem;
       object-fit: contain;
       vertical-align: middle;
+      flex-shrink: 0;
     }
 
     .logo-text {
@@ -97,10 +132,14 @@ import { ThemeService } from '../../services/theme.service';
     }
 
     .nav-links a {
-      color: var(--color-neutral-100);
+      color: var(--color-primary-300);
       font-weight: 500;
       position: relative;
       text-decoration: none;
+    }
+    
+    .dark-theme .nav-links a {
+      color: var(--text-primary);
     }
 
     .nav-links a::after {
@@ -118,21 +157,51 @@ import { ThemeService } from '../../services/theme.service';
       width: 100%;
     }
 
-    .theme-toggle {
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .header-controls-mobile {
+      display: none;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .theme-toggle, .language-toggle {
       background: none;
       border: none;
-      color: var(--color-neutral-100);
+      color: var(--color-primary-300);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--space-1);
-      border-radius: 50%;
-      transition: background-color var(--transition-normal);
+      padding: var(--space-2);
+      border-radius: 8px;
+      transition: all var(--transition-normal);
+      font-size: 0.875rem;
+      font-weight: 500;
+      min-width: 40px;
+      height: 40px;
+    }
+    
+    .dark-theme .theme-toggle, .dark-theme .language-toggle {
+      color: var(--text-primary);
     }
 
-    .theme-toggle:hover {
+    .theme-toggle:hover, .language-toggle:hover {
+      background-color: var(--color-neutral-200);
+      transform: translateY(-2px);
+    }
+    
+    .dark-theme .theme-toggle:hover, .dark-theme .language-toggle:hover {
       background-color: var(--color-neutral-700);
+    }
+
+    .language-toggle {
+      font-weight: 600;
     }
 
     .menu-toggle {
@@ -154,7 +223,7 @@ import { ThemeService } from '../../services/theme.service';
       display: block;
       height: 2px;
       width: 100%;
-      background-color: var(--color-neutral-100);
+      background-color: var(--text-primary);
       transition: all var(--transition-normal);
     }
 
@@ -183,22 +252,71 @@ import { ThemeService } from '../../services/theme.service';
     }
 
     @media (max-width: 768px) {
+      .header-controls {
+        display: none;
+      }
+
+      .header-controls-mobile {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+      }
+      
+      .logo {
+        order: 1;
+        flex: 0 0 auto;
+      }
+      
+      nav {
+        flex-wrap: nowrap;
+        gap: var(--space-2);
+      }
+      
+      .logo {
+        max-width: calc(100% - 200px);
+      }
+      
+      .logo a {
+        font-size: 1.25rem;
+      }
+      
+      .logo img {
+        width: 3.5rem;
+      }
+      
+      .logo-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
         width: 250px;
         height: 100vh;
-        background-color: var(--color-neutral-900);
+        background-color: var(--surface);
         flex-direction: column;
         padding: 80px var(--space-4) var(--space-4);
         gap: var(--space-4);
         transition: right var(--transition-normal);
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        box-shadow: -5px 0 25px var(--shadow-heavy);
+      }
+      
+      .dark-theme .nav-links {
+        background-color: var(--color-neutral-800);
       }
 
       .nav-links.active {
         right: 0;
+      }
+
+      .nav-links .header-controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: var(--space-2);
       }
 
       .menu-toggle {
@@ -206,16 +324,37 @@ import { ThemeService } from '../../services/theme.service';
         z-index: 1001;
       }
     }
+
+    [dir="rtl"] .nav-links {
+      right: auto;
+      left: -100%;
+    }
+
+    [dir="rtl"] .nav-links.active {
+      left: 0;
+      right: auto;
+    }
   `
 })
 export class HeaderComponent {
   scrolled = false;
   menuOpen = false;
+  currentLanguage = 'en';
+  faSun = faSun;
+  faMoon = faMoon;
   
-  constructor(private themeService: ThemeService) {}
+  constructor(
+    private themeService: ThemeService,
+    private languageService: LanguageService
+  ) {
+    this.currentLanguage = this.languageService.getCurrentLanguage();
+    this.languageService.currentLanguage$.subscribe(lang => {
+      this.currentLanguage = lang;
+    });
+  }
 
-  get isDarkTheme(): boolean {
-    return true; // دائمًا يعود بقيمة صحيحة لإظهار أيقونة الوضع الداكن
+  isDarkTheme(): boolean {
+    return this.themeService.isDarkTheme();
   }
   
   @HostListener('window:scroll')
@@ -224,7 +363,11 @@ export class HeaderComponent {
   }
   
   toggleTheme() {
-    this.themeService.toggleTheme(); // الاحتفاظ بهذه الوظيفة للتبديل في بقية الصفحة
+    this.themeService.toggleTheme();
+  }
+
+  toggleLanguage() {
+    this.languageService.toggleLanguage();
   }
   
   toggleMenu() {

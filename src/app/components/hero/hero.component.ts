@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   template: `
     <section class="hero dark-hero" id="home">
       <div class="hero-background"></div>
       <div class="container">
         <div class="hero-content">
           <div class="hero-text" @fadeInUp>
-            <p class="intro-text">Hello, I'm</p>
-            <h1 class="name">Mohanad Mohammed Mostafa</h1>
-            <h2 class="title">Frontend Developer</h2>
+            <p class="intro-text">{{ 'hero.intro' | translate }}</p>
+            <h1 class="name">{{ 'hero.name' | translate }}</h1>
+            <h2 class="title">{{ 'hero.title' | translate }}</h2>
             <p class="description">
-              Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript.
+              {{ 'hero.description' | translate }}
             </p>
             <div class="cta-buttons">
-              <a href="#projects" class="btn btn-primary">View My Work</a>
-              <a href="#contact" class="btn btn-outline">Contact Me</a>
+              <a href="#projects" class="btn btn-primary">{{ 'hero.viewWork' | translate }}</a>
+              <a href="#contact" class="btn btn-outline">{{ 'hero.contactMe' | translate }}</a>
             </div>
           </div>
           
@@ -121,7 +122,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
     }
     
     .name {
-      font-size: 4rem;
+      font-size: clamp(2rem, 6vw, 4rem);
       line-height: 1.1;
       margin-bottom: var(--space-1);
       background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-400));
@@ -132,13 +133,13 @@ import { animate, style, transition, trigger } from '@angular/animations';
     }
     
     .title {
-      font-size: 2rem;
+      font-size: clamp(1.25rem, 3vw, 2rem);
       margin-bottom: var(--space-3);
       color: var(--color-neutral-300);
     }
     
     .description {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
       line-height: 1.6;
       margin-bottom: var(--space-4);
       color: var(--color-neutral-300);
@@ -353,18 +354,6 @@ import { animate, style, transition, trigger } from '@angular/animations';
     }
     
     @media (max-width: 767px) {
-      .name {
-        font-size: 3rem;
-      }
-      
-      .title {
-        font-size: 1.5rem;
-      }
-      
-      .description {
-        font-size: 1.125rem;
-      }
-      
       .hero-image {
         margin-top: var(--space-5);
       }
@@ -372,6 +361,26 @@ import { animate, style, transition, trigger } from '@angular/animations';
       .image-container {
         width: 250px;
         height: 250px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-buttons .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-container {
+        width: 200px;
+        height: 200px;
+      }
+
+      .intro-text {
+        font-size: 1rem;
       }
     }
   `,

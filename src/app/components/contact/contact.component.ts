@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope, faMapMarkerAlt, faPhone, faPaperPlane, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -11,18 +12,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule, FontAwesomeModule, HttpClientModule],
   template: `
     <section id="contact" class="section">
       <div class="container">
-        <h2 class="section-title" @fadeIn>Contact Me</h2>
+        <h2 class="section-title" @fadeIn>{{ 'contact.title' | translate }}</h2>
         
         <div class="contact-content">
           <div class="contact-info" @fadeInLeft>
-            <h3>Let's Talk</h3>
+            <h3>{{ 'contact.subtitle' | translate }}</h3>
             <p>
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
-              Feel free to contact me using the form here or get in touch through my social channels.
+              {{ 'contact.description' | translate }}
             </p>
             
             <div class="info-items">
@@ -31,8 +31,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   <fa-icon [icon]="faEnvelope"></fa-icon>
                 </div>
                 <div class="info-content">
-                  <h4>Email</h4>
-                  <p><a href="mailto:alex&#64;example.com">eng.mohanadmohammedmm&#64;gmail.com</a></p>
+                  <h4>{{ 'contact.email' | translate }}</h4>
+                  <p><a href="mailto:eng.mohanadmohammedmm&#64;gmail.com">eng.mohanadmohammedmm&#64;gmail.com</a></p>
                 </div>
               </div>
               
@@ -41,7 +41,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
                 </div>
                 <div class="info-content">
-                  <h4>Location</h4>
+                  <h4>{{ 'contact.location' | translate }}</h4>
                   <p>Maadi, Cairo</p>
                 </div>
               </div>
@@ -51,7 +51,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   <fa-icon [icon]="faPhone"></fa-icon>
                 </div>
                 <div class="info-content">
-                  <h4>Phone</h4>
+                  <h4>{{ 'contact.phone' | translate }}</h4>
                   <p><a href="tel:01273908886">01273908886</a></p>
                 </div>
               </div>
@@ -59,13 +59,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
             
             <div class="social-links">
               <a href="https://github.com/mohand003" target="_blank" class="social-link" aria-label="GitHub">
-                <fa-icon [icon]="faGithub"></fa-icon>
+                <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
               </a>
               <a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" class="social-link" aria-label="LinkedIn">
-                <fa-icon [icon]="faLinkedin"></fa-icon>
+                <fa-icon [icon]="faLinkedin" [size]="'lg'"></fa-icon>
               </a>
               <a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" class="social-link" aria-label="WhatsApp">
-                <fa-icon [icon]="faWhatsapp"></fa-icon>
+                <fa-icon [icon]="faWhatsapp" [size]="'lg'"></fa-icon>
               </a>
             </div>
           </div>
@@ -73,7 +73,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
           <div class="contact-form" @fadeInRight>
             <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">{{ 'contact.name' | translate }}</label>
                 <input
                   type="text"
                   id="name"
@@ -81,12 +81,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   [class.error]="isFieldInvalid('name')"
                 >
                 @if (isFieldInvalid('name')) {
-                  <div class="error-message">Please enter your name</div>
+                  <div class="error-message">{{ 'contact.nameRequired' | translate }}</div>
                 }
               </div>
               
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">{{ 'contact.email' | translate }}</label>
                 <input
                   type="email"
                   id="email"
@@ -94,12 +94,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   [class.error]="isFieldInvalid('email')"
                 >
                 @if (isFieldInvalid('email')) {
-                  <div class="error-message">Please enter a valid email address</div>
+                  <div class="error-message">{{ 'contact.emailRequired' | translate }}</div>
                 }
               </div>
               
               <div class="form-group">
-                <label for="subject">Subject</label>
+                <label for="subject">{{ 'contact.subject' | translate }}</label>
                 <input
                   type="text"
                   id="subject"
@@ -107,12 +107,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   [class.error]="isFieldInvalid('subject')"
                 >
                 @if (isFieldInvalid('subject')) {
-                  <div class="error-message">Please enter a subject</div>
+                  <div class="error-message">{{ 'contact.subjectRequired' | translate }}</div>
                 }
               </div>
               
               <div class="form-group">
-                <label for="message">Message</label>
+                <label for="message">{{ 'contact.message' | translate }}</label>
                 <textarea
                   id="message"
                   formControlName="Message"
@@ -120,17 +120,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
                   [class.error]="isFieldInvalid('message')"
                 ></textarea>
                 @if (isFieldInvalid('message')) {
-                  <div class="error-message">Please enter your message</div>
+                  <div class="error-message">{{ 'contact.messageRequired' | translate }}</div>
                 }
               </div>
               
               <button type="submit" class="btn btn-primary submit-btn" [disabled]="isSubmitting">
                 @if (isSubmitting) {
                   <div class="spinner-small"></div>
-                  Sending...
+                  {{ 'contact.sending' | translate }}
                 } @else {
                   <fa-icon [icon]="faPaperPlane"></fa-icon>
-                  Send Message
+                  {{ 'contact.sendMessage' | translate }}
                 }
               </button>
             </form>
@@ -138,7 +138,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
             @if (formSubmitted) {
               <div class="success-message" @fadeIn>
                 <fa-icon [icon]="faCheckCircle"></fa-icon>
-                <p>Thank you! Your message has been sent successfully.</p>
+                <p>{{ 'contact.success' | translate }}</p>
               </div>
             }
           </div>
@@ -156,11 +156,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     .contact-info h3 {
       margin-bottom: var(--space-3);
       color: var(--color-primary-500);
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+    }
+    
+    .dark-theme .contact-info h3 {
+      color: var(--color-primary-400);
     }
     
     .contact-info p {
       margin-bottom: var(--space-4);
-      font-size: 1.125rem;
+      font-size: clamp(1rem, 2vw, 1.125rem);
       line-height: 1.7;
       color: var(--text-secondary);
     }
@@ -176,8 +181,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     }
     
     .info-icon {
-      width: 50px;
-      height: 50px;
+      width: clamp(40px, 8vw, 50px);
+      height: clamp(40px, 8vw, 50px);
+      min-width: 40px;
+      min-height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -185,6 +192,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       color: var(--color-primary-500);
       border-radius: 12px;
       margin-right: var(--space-3);
+      flex-shrink: 0;
       transition: all var(--transition-normal);
     }
     
@@ -193,26 +201,27 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       color: var(--color-primary-300);
     }
     
-    .info-item:hover .info-icon {
-      background-color: var(--color-primary-500);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    .info-icon fa-icon {
+      color: inherit;
     }
     
-    .dark-theme .info-item:hover .info-icon {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    .info-item:hover .info-icon {
+      background-color: var(--color-primary-500);
+      color: var(--color-neutral-50);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px var(--shadow-medium);
     }
     
     .info-content h4 {
-      font-size: 1.125rem;
+      font-size: clamp(1rem, 2vw, 1.125rem);
       margin-bottom: var(--space-1);
       color: var(--text-primary);
     }
     
     .info-content p {
       margin-bottom: 0;
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      word-break: break-word;
     }
     
     .info-content a {
@@ -233,45 +242,56 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: clamp(45px, 8vw, 50px);
+      height: clamp(45px, 8vw, 50px);
+      min-width: 45px;
+      min-height: 45px;
       border-radius: 12px;
-      background-color: var(--color-neutral-100);
+      background-color: var(--color-primary-500);
       color: var(--text-primary);
       transition: all var(--transition-normal);
-    }
-    
-    .social-link:hover {
-      background-color: var(--color-primary-500);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
     }
     
     .dark-theme .social-link {
-      background-color: var(--color-neutral-700);
+      background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
+      color: white;
+      border: 1px solid var(--color-primary-500);
+      box-shadow: 0 2px 8px rgba(10, 36, 99, 0.3);
+    }
+    
+    .social-link fa-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white !important;
+      font-size: 1.5rem;
+    }
+    
+    .social-link fa-icon svg {
+      fill: white !important;
+      width: 1.5rem !important;
+      height: 1.5rem !important;
     }
     
     .social-link:hover {
       background-color: var(--color-primary-500);
       color: white;
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 16px var(--shadow-medium);
     }
     
     .dark-theme .social-link:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+      box-shadow: 0 6px 20px rgba(10, 36, 99, 0.5);
     }
     
     .contact-form {
-      background-color: white;
+      background-color: var(--surface);
       border-radius: 12px;
-      padding: var(--space-4);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    }
-    
-    .dark-theme .contact-form {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      padding: clamp(var(--space-3), 4vw, var(--space-4));
+      box-shadow: 0 8px 30px var(--shadow-light);
+      position: relative;
     }
     
     .form-group {
@@ -285,16 +305,21 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       color: var(--text-primary);
     }
     
+    .dark-theme label {
+      color: var(--text-primary);
+    }
+    
     input, textarea {
       width: 100%;
-      padding: var(--space-3);
+      padding: clamp(var(--space-2), 3vw, var(--space-3));
       border: 1px solid var(--border);
       border-radius: 8px;
-      background-color: transparent;
+      background-color: var(--surface);
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 2vw, 1rem);
       transition: all var(--transition-normal);
+      box-sizing: border-box;
     }
     
     input:focus, textarea:focus {
@@ -326,10 +351,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       justify-content: center;
     }
     
+    .submit-btn fa-icon {
+      color: white !important;
+    }
+    
     .submit-btn:disabled {
       background-color: var(--color-neutral-400);
+      color: var(--text-secondary);
       transform: none;
       cursor: not-allowed;
+      opacity: 0.6;
     }
     
     .success-message {
@@ -356,8 +387,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     }
     
     .success-message p {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 3vw, 1.25rem);
       font-weight: 500;
+    }
+    
+    .success-message fa-icon {
+      font-size: clamp(2.5rem, 8vw, 3.75rem);
     }
     
     .spinner-small {
@@ -365,7 +400,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       height: 20px;
       border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      border-top-color: white;
+      border-top-color: var(--text-primary);
       animation: spin 1s ease-in-out infinite;
     }
     
@@ -373,9 +408,75 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       to { transform: rotate(360deg); }
     }
     
+    @media (max-width: 576px) {
+      .contact-content {
+        gap: var(--space-3);
+      }
+      
+      .contact-info h3 {
+        font-size: clamp(1.25rem, 4vw, 1.5rem);
+      }
+      
+      .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+      }
+      
+      .info-icon {
+        margin-right: 0;
+        margin-bottom: var(--space-1);
+      }
+      
+      .social-links {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+      
+      .contact-form {
+        padding: var(--space-3);
+      }
+      
+      .form-group {
+        margin-bottom: var(--space-2);
+      }
+      
+      label {
+        font-size: clamp(0.875rem, 2vw, 1rem);
+      }
+    }
+    
+    @media (min-width: 577px) and (max-width: 767px) {
+      .contact-content {
+        gap: var(--space-4);
+      }
+      
+      .info-item {
+        gap: var(--space-2);
+      }
+    }
+    
     @media (min-width: 768px) {
       .contact-content {
         grid-template-columns: 1fr 1fr;
+        gap: var(--space-5);
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .contact-content {
+        gap: var(--space-6);
+      }
+    }
+    
+    [dir="rtl"] .info-icon {
+      margin-right: 0;
+      margin-left: var(--space-3);
+    }
+    
+    @media (max-width: 576px) {
+      [dir="rtl"] .info-icon {
+        margin-left: 0;
       }
     }
   `,

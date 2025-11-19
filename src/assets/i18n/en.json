@@ -1,0 +1,84 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "hero": {
+    "intro": "Hello, I'm",
+    "name": "Mohanad Mohammed Mostafa",
+    "title": "Frontend Developer",
+    "description": "Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript.",
+    "viewWork": "View My Work",
+    "contactMe": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Frontend Developer (Angular)",
+    "description": "Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript. Distinguished by exceptional design intuition and creative vision - able to conceptualize and build pixel-perfect, visually stunning interfaces entirely from scratch without requiring external design references or mockups.",
+    "name": "Name:",
+    "email": "Email:",
+    "location": "Location:",
+    "availability": "Availability:",
+    "freelance": "Freelance",
+    "fullTime": "Full Time/Part Time",
+    "downloadResume": "Download Resume"
+  },
+  "skills": {
+    "title": "My Skills",
+    "subtitle": "Technical Expertise",
+    "description1": "With a strong foundation in web technologies and a passion for clean, efficient code, I've developed expertise in a range of tools and frameworks that allow me to build performant, accessible, and beautiful web applications.",
+    "description2": "I'm constantly learning and experimenting with new technologies to stay ahead of industry trends and deliver cutting-edge solutions to complex problems.",
+    "frontend": "Frontend Development",
+    "tools": "Tools & Others"
+  },
+  "projects": {
+    "title": "My Projects",
+    "allProjects": "All Projects",
+    "featured": "Featured Project",
+    "code": "Code",
+    "liveDemo": "Live Demo",
+    "caseStudy": "Case Study"
+  },
+  "experience": {
+    "title": "Work Experience"
+  },
+  "education": {
+    "title": "Education"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Let's Talk",
+    "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision. Feel free to contact me using the form here or get in touch through my social channels.",
+    "email": "Email",
+    "location": "Location",
+    "phone": "Phone",
+    "name": "Name",
+    "subject": "Subject",
+    "message": "Message",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! Your message has been sent successfully.",
+    "nameRequired": "Please enter your name",
+    "emailRequired": "Please enter a valid email address",
+    "subjectRequired": "Please enter a subject",
+    "messageRequired": "Please enter your message"
+  },
+  "footer": {
+    "description": "Front-End Developer specializing in modern JavaScript frameworks",
+    "navigation": "Navigation",
+    "social": "Social",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+}
+
