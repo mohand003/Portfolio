@@ -40,13 +40,13 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
               </div>
               <div class="project-links">
                 @if (featuredProject.github) {
-                  <a [href]="featuredProject.github" target="_blank" class="project-link github">
+                  <a [href]="featuredProject.github" target="_blank" rel="noopener noreferrer" class="project-link github">
                     <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
                     {{ 'projects.code' | translate }}
                   </a>
                 }
                 @if (featuredProject.link) {
-                  <a [href]="featuredProject.link" target="_blank" class="project-link live">
+                  <a [href]="featuredProject.link" target="_blank" rel="noopener noreferrer" class="project-link live">
                     <fa-icon [icon]="faExternalLinkAlt" [size]="'lg'"></fa-icon>
                     {{ 'projects.liveDemo' | translate }}
                   </a>
@@ -60,7 +60,15 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
               </div>
             </div>
             <div class="featured-image">
-              <img [src]="featuredProject.image" [alt]="featuredProject.title">
+              <img 
+                [src]="featuredProject.image" 
+                [alt]="featuredProject.title"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                referrerpolicy="no-referrer-when-downgrade"
+                crossorigin="anonymous"
+              >
             </div>
           </div>
         </div>
@@ -279,13 +287,13 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('800ms ease', style({ opacity: 1 })),
+        animate('400ms ease', style({ opacity: 1 })),
       ]),
     ]),
     trigger('fadeInUp', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateY(0)' })),
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
     ]),
   ],

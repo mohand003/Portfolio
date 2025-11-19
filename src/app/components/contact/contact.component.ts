@@ -58,13 +58,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
             </div>
             
             <div class="social-links">
-              <a href="https://github.com/mohand003" target="_blank" class="social-link" aria-label="GitHub">
+              <a href="https://github.com/mohand003" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
                 <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
               </a>
-              <a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" class="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
                 <fa-icon [icon]="faLinkedin" [size]="'lg'"></fa-icon>
               </a>
-              <a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" class="social-link" aria-label="WhatsApp">
+              <a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
                 <fa-icon [icon]="faWhatsapp" [size]="'lg'"></fa-icon>
               </a>
             </div>
@@ -484,19 +484,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('800ms ease', style({ opacity: 1 })),
+        animate('400ms ease', style({ opacity: 1 })),
       ]),
     ]),
     trigger('fadeInLeft', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(-20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
     trigger('fadeInRight', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
   ],

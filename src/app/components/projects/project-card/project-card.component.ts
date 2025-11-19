@@ -12,16 +12,24 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
   template: `
     <div class="project-card">
       <div class="card-image">
-        <img [src]="project.image" [alt]="project.title">
+        <img 
+          [src]="project.image" 
+          [alt]="project.title"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+          referrerpolicy="no-referrer-when-downgrade"
+          crossorigin="anonymous"
+        >
         <div class="card-overlay">
           <div class="card-actions">
             @if (project.github) {
-              <a [href]="project.github" target="_blank" class="card-action github" aria-label="View GitHub repository">
+              <a [href]="project.github" target="_blank" rel="noopener noreferrer" class="card-action github" aria-label="View GitHub repository">
                 <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
               </a>
             }
             @if (project.link) {
-              <a [href]="project.link" target="_blank" class="card-action live" aria-label="View live demo">
+              <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="card-action live" aria-label="View live demo">
                 <fa-icon [icon]="faExternalLinkAlt" [size]="'lg'"></fa-icon>
               </a>
             }

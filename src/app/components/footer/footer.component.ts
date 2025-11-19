@@ -34,9 +34,9 @@ import { TranslateModule } from '@ngx-translate/core';
             <div class="footer-social">
               <h3>{{ 'footer.social' | translate }}</h3>
               <ul>
-                <li><a href="https://github.com/mohand003" target="_blank">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank">WhatsApp</a></li>
+                <li><a href="https://github.com/mohand003" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
               </ul>
             </div>
           </div>

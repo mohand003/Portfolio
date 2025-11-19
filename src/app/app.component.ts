@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ThemeService } from './services/theme.service';
+import { LanguageService } from './services/language.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
+import { LazyLoadDirective } from './directives/lazy-load.directive';
+
+// Lazy loaded components
 import { AboutComponent } from './components/about/about.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ThemeService } from './services/theme.service';
-import { LanguageService } from './services/language.service';
-import { TranslateService } from '@ngx-translate/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -24,14 +26,14 @@ import { Subscription } from 'rxjs';
     RouterOutlet,
     HeaderComponent,
     HeroComponent,
+    FooterComponent,
+    LazyLoadDirective,
     AboutComponent,
     SkillsComponent,
     ProjectsComponent,
     ExperienceComponent,
     EducationComponent,
-    ContactComponent,
-    FooterComponent,
-    FontAwesomeModule
+    ContactComponent
   ],
   template: `
     <div>
@@ -39,12 +41,48 @@ import { Subscription } from 'rxjs';
       <main class="main-container">
         <div class="content-wrapper">
           <app-hero></app-hero>
-          <app-about></app-about>
-          <app-skills></app-skills>
-          <app-projects></app-projects>
-          <app-experience></app-experience>
-          <app-education></app-education>
-          <app-contact></app-contact>
+          <section appLazyLoad data-section="about" class="lazy-section">
+            @defer (on viewport) {
+              <app-about></app-about>
+            } @placeholder {
+              <div class="section-placeholder"></div>
+            }
+          </section>
+          <section appLazyLoad data-section="skills" class="lazy-section">
+            @defer (on viewport) {
+              <app-skills></app-skills>
+            } @placeholder {
+              <div class="section-placeholder"></div>
+            }
+          </section>
+          <section appLazyLoad data-section="projects" class="lazy-section">
+            @defer (on viewport) {
+              <app-projects></app-projects>
+            } @placeholder {
+              <div class="section-placeholder"></div>
+            }
+          </section>
+          <section appLazyLoad data-section="experience" class="lazy-section">
+            @defer (on viewport) {
+              <app-experience></app-experience>
+            } @placeholder {
+              <div class="section-placeholder"></div>
+            }
+          </section>
+          <section appLazyLoad data-section="education" class="lazy-section">
+            @defer (on viewport) {
+              <app-education></app-education>
+            } @placeholder {
+              <div class="section-placeholder"></div>
+            }
+          </section>
+          <section appLazyLoad data-section="contact" class="lazy-section">
+            @defer (on viewport) {
+              <app-contact></app-contact>
+            } @placeholder {
+              <div class="section-placeholder"></div>
+            }
+          </section>
           <router-outlet></router-outlet>
         </div>
       </main>
@@ -65,6 +103,23 @@ import { Subscription } from 'rxjs';
     .content-wrapper {
       width: 100%;
       max-width: 100%;
+    }
+    
+    .lazy-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      will-change: opacity, transform;
+    }
+    
+    .lazy-section.loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section-placeholder {
+      min-height: 200px;
+      background: transparent;
     }
     
     @media (max-width: 768px) {

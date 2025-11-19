@@ -84,9 +84,12 @@ import { TranslateModule } from '@ngx-translate/core';
       background-image: url('https://res.cloudinary.com/df9rcxvpg/image/upload/v1763509881/profile-bg_mxy3sj.png');
       background-size: cover;
       background-position: center;
+      background-attachment: scroll;
       filter: blur(8px) brightness(0.4);
       z-index: -2;
       transform: scale(1.1);
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
     
     .hero-background::after {
@@ -169,6 +172,7 @@ import { TranslateModule } from '@ngx-translate/core';
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
       animation: morphing 10s infinite;
       z-index: -1;
+      will-change: border-radius;
     }
     
     .profile-image {
@@ -177,9 +181,13 @@ import { TranslateModule } from '@ngx-translate/core';
       background-image: url('https://res.cloudinary.com/df9rcxvpg/image/upload/v1763509773/Portfolio/Background.png');
       background-size: cover;
       background-position: center;
+      background-attachment: scroll;
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
       animation: morphing 15s infinite alternate;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      will-change: border-radius, transform;
     }
 
     .tech-icon {
@@ -192,6 +200,7 @@ import { TranslateModule } from '@ngx-translate/core';
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       animation: float 3s ease-in-out infinite;
+      will-change: transform;
     }
     
     .tech-icon svg {
@@ -388,19 +397,19 @@ import { TranslateModule } from '@ngx-translate/core';
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('1000ms ease', style({ opacity: 1 })),
+        animate('600ms ease', style({ opacity: 1 })),
       ]),
     ]),
     trigger('fadeInUp', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateY(0)' })),
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('500ms ease', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
     ]),
     trigger('fadeInRight', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(30px)' }),
-        animate('800ms 300ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(20px)' }),
+        animate('500ms 200ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
   ],

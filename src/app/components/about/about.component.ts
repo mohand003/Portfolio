@@ -18,7 +18,15 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
         <div class="about-content">
           <div class="about-image" @fadeInLeft>
             <div class="image-wrapper">
-              <img src="https://cdn.mos.cms.futurecdn.net/GaAJCwmwsGF7QAKirfUyG5.jpg" alt="">
+              <img 
+                src="https://cdn.mos.cms.futurecdn.net/GaAJCwmwsGF7QAKirfUyG5.jpg" 
+                alt="Mohanad Mohammed Mostafa - Frontend Developer"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                referrerpolicy="no-referrer-when-downgrade"
+                crossorigin="anonymous"
+              >
             </div>
           </div>
           
@@ -49,13 +57,13 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
             </div>
             
             <div class="social-links">
-              <a href="https://github.com/mohand003" target="_blank" class="social-link" aria-label="GitHub">
+              <a href="https://github.com/mohand003" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
                 <fa-icon [icon]="faGithub" [size]="'lg'"></fa-icon>
               </a>
-              <a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" class="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/mohanad-mohammed-7622311b8/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
                 <fa-icon [icon]="faLinkedin" [size]="'lg'"></fa-icon>
               </a>
-              <a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" class="social-link" aria-label="WhatsApp">
+              <a href="https://wa.me/qr/SVSAXEPZ3UMKH1" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
                 <fa-icon [icon]="faWhatsapp" [size]="'lg'"></fa-icon>
               </a>
             </div>
@@ -296,19 +304,19 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('800ms ease', style({ opacity: 1 })),
+        animate('400ms ease', style({ opacity: 1 })),
       ]),
     ]),
     trigger('fadeInLeft', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(-20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
     trigger('fadeInRight', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
   ],

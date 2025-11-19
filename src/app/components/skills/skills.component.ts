@@ -185,19 +185,19 @@ interface Skill {
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('800ms ease', style({ opacity: 1 })),
+        animate('400ms ease', style({ opacity: 1 })),
       ]),
     ]),
     trigger('fadeInLeft', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(-20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
     trigger('fadeInRight', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(30px)' }),
-        animate('800ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
+        style({ opacity: 0, transform: 'translateX(20px)' }),
+        animate('400ms ease', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
   ],
