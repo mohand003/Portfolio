@@ -61,13 +61,13 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
             </div>
             <div class="featured-image">
               <img 
-                [src]="featuredProject.image" 
+                [src]="getFeaturedImageSrc()" 
                 [alt]="featuredProject.title"
                 loading="lazy"
                 decoding="async"
                 fetchpriority="low"
                 referrerpolicy="no-referrer-when-downgrade"
-                crossorigin="anonymous"
+                (error)="onFeaturedImageError($event)"
               >
             </div>
           </div>
@@ -344,10 +344,29 @@ export class ProjectsComponent {
   
   filteredProjects: Project[] = [];
   featuredProject: Project | undefined;
+  featuredImageError = false;
   
   constructor() {
     this.featuredProject = this.projects.find(project => project.featured);
     this.filterProjects('all');
+  }
+  
+  onFeaturedImageError(event: Event): void {
+    this.featuredImageError = true;
+    const img = event.target as HTMLImageElement;
+    img.src = this.getPlaceholderImage();
+  }
+  
+  getPlaceholderImage(): string {
+    // SVG placeholder with gradient background
+    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmM2Y0ZjYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlNWU3ZWIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0idXJsKCNhKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Qcm9qZWN0IEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+  }
+  
+  getFeaturedImageSrc(): string {
+    if (this.featuredImageError || !this.featuredProject) {
+      return this.getPlaceholderImage();
+    }
+    return this.featuredProject.image;
   }
   
   filterProjects(filter: string): void {
