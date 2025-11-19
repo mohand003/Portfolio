@@ -4,11 +4,12 @@ import { Project } from '../../../models/project.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, TranslateModule],
   template: `
     <div class="project-card">
       <div class="card-image">
@@ -42,8 +43,8 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
         </div>
       </div>
       <div class="card-content">
-        <h3 class="card-title">{{ project.title }}</h3>
-        <p class="card-description">{{ project.description }}</p>
+        <h3 class="card-title">{{ project.title | translate }}</h3>
+        <p class="card-description">{{ project.description | translate }}</p>
         <div class="card-tech">
           @for (tech of project.tech.slice(0, 3); track tech) {
             <span class="tech-tag">{{ tech }}</span>
@@ -245,6 +246,20 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
     .dark-theme .tech-more {
       background-color: var(--color-primary-900);
       color: var(--color-primary-300);
+    }
+    
+    /* RTL Support */
+    [dir="rtl"] .card-content {
+      text-align: right;
+    }
+    
+    [dir="rtl"] .card-title,
+    [dir="rtl"] .card-description {
+      text-align: right;
+    }
+    
+    [dir="rtl"] .card-tech {
+      justify-content: flex-end;
     }
   `
 })

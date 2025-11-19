@@ -66,10 +66,11 @@ import { TranslateModule } from '@ngx-translate/core';
   `,
   styles: `
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 80px;
+      padding-top: clamp(120px, 12vw, 160px);
+      padding-bottom: var(--space-6);
       position: relative;
       overflow: hidden;
       color: var(--color-neutral-100);

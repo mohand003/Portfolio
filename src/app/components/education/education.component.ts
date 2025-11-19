@@ -24,14 +24,14 @@ interface Education {
             <div class="timeline-marker" [class.active]="selectedEducation === 0"></div>
             <div class="timeline-content" @fadeInUp>
               <div class="timeline-header">
-                <h3 class="timeline-title">{{ education.degree }}</h3>
-                <span class="timeline-company">{{ education.institution }}</span>
-                <span class="timeline-period">{{ education.period }}</span>
+                <h3 class="timeline-title">{{ education.degree | translate }}</h3>
+                <span class="timeline-company">{{ education.institution | translate }}</span>
+                <span class="timeline-period">{{ education.period | translate }}</span>
               </div>
               <div class="timeline-body" [class.expanded]="selectedEducation === 0">
                 <ul class="achievements">
                   @for (highlight of education.highlights; track highlight) {
-                    <li>{{ highlight }}</li>
+                    <li>{{ highlight | translate }}</li>
                   }
                 </ul>
               </div>
@@ -184,6 +184,68 @@ interface Education {
         margin-left: var(--space-4);
       }
     }
+    
+    /* RTL Support */
+    [dir="rtl"] .timeline::before {
+      right: 24px;
+      left: auto;
+    }
+    
+    [dir="rtl"] .timeline-item {
+      padding-right: 50px;
+      padding-left: 0;
+    }
+    
+    [dir="rtl"] .timeline-marker {
+      right: 15px;
+      left: auto;
+    }
+    
+    [dir="rtl"] .achievements {
+      padding-right: var(--space-4);
+      padding-left: 0;
+    }
+    
+    [dir="rtl"] .achievements li::before {
+      right: -20px;
+      left: auto;
+    }
+    
+    @media (min-width: 768px) {
+      [dir="rtl"] .timeline::before {
+        right: 50%;
+        left: auto;
+        margin-right: -1px;
+        margin-left: 0;
+      }
+      
+      [dir="rtl"] .timeline-item {
+        padding-right: 50%;
+        padding-left: var(--space-4);
+      }
+      
+      [dir="rtl"] .timeline-marker {
+        right: 50%;
+        left: auto;
+        margin-right: -10px;
+        margin-left: 0;
+      }
+      
+      [dir="rtl"] .timeline-item .timeline-content {
+        margin-right: var(--space-4);
+        margin-left: 0;
+      }
+      
+      [dir="rtl"] .achievements {
+        padding-left: var(--space-4);
+        padding-right: 0;
+      }
+      
+      [dir="rtl"] .achievements li::before {
+        left: -20px;
+        right: auto;
+      }
+    }
   `,
   animations: [
     trigger('fadeIn', [
@@ -204,13 +266,13 @@ export class EducationComponent {
   selectedEducation = 0;
   
   education: Education = {
-    institution: 'Faculty of Computers and Information, Zagazig University',
-    degree: 'Bachelor of Computer Science',
-    period: '2021 – 2025',
+    institution: 'education.items.zagazig.institution',
+    degree: 'education.items.zagazig.degree',
+    period: 'education.items.zagazig.period',
     highlights: [
-      'Fresh Graduate from Computer Science program',
-      'Strong foundation in data structures and algorithms',
-      'Comprehensive study of C++ and Object-Oriented Programming',
+      'education.items.zagazig.highlights.0',
+      'education.items.zagazig.highlights.1',
+      'education.items.zagazig.highlights.2',
     ]
   };
   

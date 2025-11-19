@@ -41,13 +41,69 @@
     "featured": "Featured Project",
     "code": "Code",
     "liveDemo": "Live Demo",
-    "caseStudy": "Case Study"
+    "caseStudy": "Case Study",
+    "items": {
+      "uiEvolution": {
+        "title": "Graduation Project: UI Generator (UI Evolution) - Grade: A+",
+        "description": "Developed complete frontend interface for AI-powered UI automation system using Angular, Bootstrap, and 3D JavaScript. Implemented user authentication, responsive design, and dynamic visual components with enhanced user experience."
+      },
+      "nileMart": {
+        "title": "E-Commerce (Nile-Mart)",
+        "description": "Built a fully responsive Angular e-commerce web application with HTML5, CSS3, and TypeScript using LocalStorage for data persistence. Includes authentication, product management, shopping cart, and favorites."
+      },
+      "superMart": {
+        "title": "Super-Mart (Supermarket System)",
+        "description": "Developed a responsive Angular supermarket platform powered by TypeScript and LocalStorage. Provides customer shopping experience, offers browsing, and full administrative controls."
+      },
+      "mshSuits": {
+        "title": "MSH Suits (Women's Suits E-Commerce)",
+        "description": "Built a full-stack e-commerce platform with Angular 20 frontend and Node.js backend. Delivered admin dashboard for orders, products, promo codes, JWT auth, multi-language support, theming, and shopping cart with order management."
+      }
+    }
   },
   "experience": {
-    "title": "Work Experience"
+    "title": "Work Experience",
+    "items": {
+      "adaplo": {
+        "company": "Adaplo",
+        "role": "Frontend Developer",
+        "period": "Sept 2025 – Present",
+        "description": "Developing and maintaining responsive web applications using React framework.",
+        "achievements": [
+          "Developing and maintaining responsive web applications using React framework",
+          "Implementing modern UI/UX designs with TypeScript, HTML5, and CSS3",
+          "Collaborating with cross-functional teams to deliver high-quality frontend solutions",
+          "Writing clean, maintainable code following best practices and coding standards"
+        ]
+      },
+      "saiket": {
+        "company": "Saiket Systems",
+        "role": "Frontend Intern",
+        "period": "June 2025 – July 2025",
+        "description": "Completed a one-month frontend internship focused on real-world UI challenges.",
+        "achievements": [
+          "Completed a one-month frontend internship focused on real-world UI challenges",
+          "Developed and delivered 6 diverse frontend tasks within set deadlines",
+          "Applied HTML, CSS, and JavaScript skills to practical projects",
+          "Demonstrated strong problem-solving abilities and attention to detail in responsive design implementation"
+        ]
+      }
+    }
   },
   "education": {
-    "title": "Education"
+    "title": "Education",
+    "items": {
+      "zagazig": {
+        "institution": "Faculty of Computers and Information, Zagazig University",
+        "degree": "Bachelor of Computer Science",
+        "period": "2021 – 2025",
+        "highlights": [
+          "Fresh graduate from Computer Science program",
+          "Strong foundation in data structures and algorithms",
+          "Comprehensive study of C++ and Object-Oriented Programming"
+        ]
+      }
+    }
   },
   "contact": {
     "title": "Contact Me",

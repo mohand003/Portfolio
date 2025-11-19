@@ -31,8 +31,8 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
           <div class="featured-content">
             <div class="featured-text">
               <span class="featured-label">{{ 'projects.featured' | translate }}</span>
-              <h3>{{ featuredProject.title }}</h3>
-              <p>{{ featuredProject.description }}</p>
+              <h3>{{ featuredProject.title | translate }}</h3>
+              <p>{{ featuredProject.description | translate }}</p>
               <div class="tech-stack">
                 @for (tech of featuredProject.tech; track tech) {
                   <span class="tech-tag">{{ tech }}</span>
@@ -282,6 +282,34 @@ import { faExternalLinkAlt, faBook } from '@fortawesome/free-solid-svg-icons';
         grid-template-columns: repeat(3, 1fr);
       }
     }
+    
+    /* RTL Support */
+    [dir="rtl"] .featured-text {
+      text-align: right;
+    }
+    
+    [dir="rtl"] .featured-text h3,
+    [dir="rtl"] .featured-text p {
+      text-align: right;
+    }
+    
+    [dir="rtl"] .tech-stack {
+      justify-content: flex-end;
+    }
+    
+    [dir="rtl"] .project-links {
+      flex-direction: row-reverse;
+    }
+    
+    [dir="rtl"] .project-link {
+      flex-direction: row-reverse;
+    }
+    
+    @media (min-width: 768px) {
+      [dir="rtl"] .featured-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   `,
   animations: [
     trigger('fadeIn', [
@@ -303,8 +331,8 @@ export class ProjectsComponent {
   projects: Project[] = [
     {
       id: 1,
-      title: 'Graduation Project: UI Generator (UI Evolution) - Grade: A+',
-      description: 'Developed complete frontend interface for AI-powered UI automation system using Angular, Bootstrap, and 3D JavaScript. Implemented user authentication, responsive design, and dynamic visual components with enhanced user experience.',
+      title: 'projects.items.uiEvolution.title',
+      description: 'projects.items.uiEvolution.description',
       image: 'https://www.datocms-assets.com/16499/1734278451-thumb-ai-ui-generators.png?auto=format',
       tech: ['Angular', 'Bootstrap', '3D JavaScript', 'TypeScript'],
       link: 'https://ui-evolution.vercel.app/',
@@ -313,8 +341,8 @@ export class ProjectsComponent {
     },
     {
       id: 2,
-      title: 'E-Commerce (Nile-Mart)',
-      description: 'Built a fully responsive Angular e-commerce web application. Implemented using HTML5, CSS3, and TypeScript with LocalStorage for data persistence. Features include user authentication, product management, shopping cart, and favorites.',
+      title: 'projects.items.nileMart.title',
+      description: 'projects.items.nileMart.description',
       image: 'https://img.freepik.com/free-vector/ecommerce-web-page-concept-illustration_114360-8204.jpg',
       tech: ['Angular', 'TypeScript', 'HTML5', 'CSS3', 'LocalStorage'],
       link: 'https://nile-mart-tan.vercel.app/',
@@ -323,8 +351,8 @@ export class ProjectsComponent {
     },
     {
       id: 3,
-      title: 'Super-Mart (Supermarket System)',
-      description: 'Built a responsive Angular supermarket website with TypeScript and LocalStorage. Features user shopping interface and offers browsing functionality. Complete supermarket system with full administrative controls.',
+      title: 'projects.items.superMart.title',
+      description: 'projects.items.superMart.description',
       image: 'https://img.freepik.com/free-vector/supermarket-logo-template-with-shopping-cart_23-2148470292.jpg',
       tech: ['Angular', 'TypeScript', 'LocalStorage'],
       link: 'https://super-mart-five.vercel.app/',
@@ -333,8 +361,8 @@ export class ProjectsComponent {
     },
     {
       id: 4,
-      title: 'MSH Suits (Women\'s Suits E-Commerce)',
-      description: 'Developed full-stack e-commerce platform with Angular 20 frontend and Node.js backend. Implemented comprehensive admin dashboard for managing orders, products, and promo codes with complete CRUD operations. Integrated JWT authentication, multi-language support (NGX-Translate), dark/light theme switching, and shopping cart with order management.',
+      title: 'projects.items.mshSuits.title',
+      description: 'projects.items.mshSuits.description',
       image: 'https://res.cloudinary.com/df9rcxvpg/image/upload/v1759015601/home_upwiwy.jpg',
       tech: ['Angular 20', 'Node.js', 'JWT', 'NGX-Translate', 'RxJS'],
       link: 'https://msh-suits.vercel.app/',

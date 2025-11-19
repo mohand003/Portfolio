@@ -88,6 +88,10 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       gap: var(--space-2);
     }
 
+    [dir="rtl"] nav {
+      justify-content: space-between;
+    }
+
     .logo {
       flex-shrink: 0;
       min-width: 0;
@@ -129,6 +133,9 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       display: flex;
       gap: var(--space-4);
       align-items: center;
+      flex: 1;
+      justify-content: flex-end;
+      margin-left: var(--space-4);
     }
 
     .nav-links a {
@@ -223,8 +230,12 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       display: block;
       height: 2px;
       width: 100%;
-      background-color: var(--text-primary);
+      background-color: var(--color-primary-300);
       transition: all var(--transition-normal);
+    }
+
+    .dark-theme .hamburger span {
+      background-color: var(--text-primary);
     }
 
     .hamburger.active span:nth-child(1) {
@@ -291,6 +302,7 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       }
 
       .nav-links {
+        flex: initial;
         position: fixed;
         top: 0;
         right: -100%;
@@ -326,13 +338,48 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
     }
 
     [dir="rtl"] .nav-links {
-      right: auto;
-      left: -100%;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      margin-left: 0;
+      margin-right: var(--space-4);
     }
 
-    [dir="rtl"] .nav-links.active {
-      left: 0;
-      right: auto;
+    @media (max-width: 768px) {
+      [dir="rtl"] nav {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+      }
+
+      [dir="rtl"] .logo {
+        order: 3;
+        margin-left: auto;
+        margin-right: 0;
+        flex-shrink: 0;
+      }
+
+      [dir="rtl"] .header-controls-mobile {
+        order: 1;
+        margin-right: 0;
+        margin-left: 0;
+        flex-direction: row-reverse;
+        flex-shrink: 0;
+      }
+
+      [dir="rtl"] .nav-links {
+        flex-direction: column;
+        margin-right: 0;
+        right: auto;
+        left: -100%;
+      }
+
+      [dir="rtl"] .nav-links.active {
+        left: 0;
+        right: auto;
+      }
+
+      [dir="rtl"] .nav-links .header-controls {
+        flex-direction: row-reverse;
+      }
     }
   `
 })

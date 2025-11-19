@@ -26,15 +26,15 @@ interface Experience {
               <div class="timeline-marker" [class.active]="selectedExperience === i"></div>
               <div class="timeline-content" @fadeInUp>
                 <div class="timeline-header">
-                  <h3 class="timeline-title">{{ experience.role }}</h3>
-                  <span class="timeline-company">{{ experience.company }}</span>
-                  <span class="timeline-period">{{ experience.period }}</span>
+                  <h3 class="timeline-title">{{ experience.role | translate }}</h3>
+                  <span class="timeline-company">{{ experience.company | translate }}</span>
+                  <span class="timeline-period">{{ experience.period | translate }}</span>
                 </div>
                 <div class="timeline-body" [class.expanded]="selectedExperience === i">
-                  <p>{{ experience.description }}</p>
+                  <p>{{ experience.description | translate }}</p>
                   <ul class="achievements">
                     @for (achievement of experience.achievements; track achievement) {
-                      <li>{{ achievement }}</li>
+                      <li>{{ achievement | translate }}</li>
                     }
                   </ul>
                 </div>
@@ -213,6 +213,80 @@ interface Experience {
         left: auto;
       }
     }
+    
+    /* RTL Support */
+    [dir="rtl"] .timeline::before {
+      right: 24px;
+      left: auto;
+    }
+    
+    [dir="rtl"] .timeline-item {
+      padding-right: 50px;
+      padding-left: 0;
+    }
+    
+    [dir="rtl"] .timeline-marker {
+      right: 15px;
+      left: auto;
+    }
+    
+    [dir="rtl"] .achievements {
+      padding-right: var(--space-4);
+      padding-left: 0;
+    }
+    
+    [dir="rtl"] .achievements li::before {
+      right: -20px;
+      left: auto;
+    }
+    
+    @media (min-width: 768px) {
+      [dir="rtl"] .timeline::before {
+        right: 50%;
+        left: auto;
+        margin-right: -1px;
+        margin-left: 0;
+      }
+      
+      [dir="rtl"] .timeline-item:nth-child(odd) {
+        padding-left: 50%;
+        padding-right: var(--space-4);
+        text-align: right;
+      }
+      
+      [dir="rtl"] .timeline-item:nth-child(even) {
+        padding-right: 50%;
+        padding-left: var(--space-4);
+        text-align: left;
+      }
+      
+      [dir="rtl"] .timeline-marker {
+        right: 50%;
+        left: auto;
+        margin-right: -10px;
+        margin-left: 0;
+      }
+      
+      [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: var(--space-4);
+        margin-right: 0;
+      }
+      
+      [dir="rtl"] .timeline-item:nth-child(even) .timeline-content {
+        margin-right: var(--space-4);
+        margin-left: 0;
+      }
+      
+      [dir="rtl"] .timeline-item:nth-child(odd) .achievements {
+        padding-left: var(--space-4);
+        padding-right: 0;
+      }
+      
+      [dir="rtl"] .timeline-item:nth-child(even) .achievements li::before {
+        left: -20px;
+        right: auto;
+      }
+    }
   `,
   animations: [
     trigger('fadeIn', [
@@ -234,27 +308,27 @@ export class ExperienceComponent {
   
   experiences: Experience[] = [
     {
-      company: 'Adaplo',
-      role: 'Frontend Developer',
-      period: 'Sept 2025 – Present',
-      description: 'Developing and maintaining responsive web applications using React framework.',
+      company: 'experience.items.adaplo.company',
+      role: 'experience.items.adaplo.role',
+      period: 'experience.items.adaplo.period',
+      description: 'experience.items.adaplo.description',
       achievements: [
-        'Developing and maintaining responsive web applications using React framework',
-        'Implementing modern UI/UX designs with TypeScript, HTML5, and CSS3',
-        'Collaborating with cross-functional teams to deliver high-quality frontend solutions',
-        'Writing clean, maintainable code following best practices and coding standards',
+        'experience.items.adaplo.achievements.0',
+        'experience.items.adaplo.achievements.1',
+        'experience.items.adaplo.achievements.2',
+        'experience.items.adaplo.achievements.3',
       ]
     },
     {
-      company: 'Saiket Systems',
-      role: 'Frontend Intern',
-      period: 'June 2025 – July 2025',
-      description: 'Completed a one-month frontend internship focused on real-world UI challenges.',
+      company: 'experience.items.saiket.company',
+      role: 'experience.items.saiket.role',
+      period: 'experience.items.saiket.period',
+      description: 'experience.items.saiket.description',
       achievements: [
-        'Completed a one-month frontend internship focused on real-world UI challenges',
-        'Developed and delivered 6 diverse frontend tasks within set deadlines',
-        'Applied HTML, CSS, and JavaScript skills to practical projects',
-        'Demonstrated strong problem-solving abilities and attention to detail in responsive design implementation',
+        'experience.items.saiket.achievements.0',
+        'experience.items.saiket.achievements.1',
+        'experience.items.saiket.achievements.2',
+        'experience.items.saiket.achievements.3',
       ]
     },
   ];
