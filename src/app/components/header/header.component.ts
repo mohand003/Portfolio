@@ -270,7 +270,8 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       .header-controls-mobile {
         display: flex;
         order: 2;
-        margin-left: auto;
+        margin-left: 5px;
+        margin-right: 5px;
       }
       
       .logo {
@@ -302,7 +303,7 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       }
 
       .nav-links {
-        flex: initial;
+        display: none !important;
         position: fixed;
         top: 0;
         right: -100%;
@@ -314,6 +315,9 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
         gap: var(--space-4);
         transition: right var(--transition-normal);
         box-shadow: -5px 0 25px var(--shadow-heavy);
+        margin: 0 !important;
+        flex: none !important;
+        order: 999 !important;
       }
       
       .dark-theme .nav-links {
@@ -321,6 +325,7 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
       }
 
       .nav-links.active {
+        display: flex !important;
         right: 0;
       }
 
@@ -345,9 +350,17 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
     }
 
     @media (max-width: 768px) {
+      [dir="rtl"] .nav-links {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+      }
+    }
+
+    @media (max-width: 768px) {
       [dir="rtl"] nav {
         flex-direction: row-reverse;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
       }
 
       [dir="rtl"] .logo {
@@ -361,20 +374,25 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
         order: 1;
         margin-right: 0;
         margin-left: 0;
-        flex-direction: row-reverse;
+        flex-direction: row;
         flex-shrink: 0;
       }
 
       [dir="rtl"] .nav-links {
         flex-direction: column;
-        margin-right: 0;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
         right: auto;
         left: -100%;
+        display: none !important;
+        flex: none !important;
+        order: 999 !important;
       }
 
       [dir="rtl"] .nav-links.active {
         left: 0;
         right: auto;
+        display: flex !important;
       }
 
       [dir="rtl"] .nav-links .header-controls {
