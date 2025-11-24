@@ -68,7 +68,7 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
               </a>
             </div>
             
-              <a [href]="'assets/Mohanad_CV.pdf'" class="btn btn-primary">
+              <a [href]="'assets/Mohanad_CV.pdf'" download="Mohanad_CV.pdf" class="btn btn-primary">
                 <fa-icon [icon]="faDownload"></fa-icon>
                   {{ 'about.downloadResume' | translate }}
               </a>
