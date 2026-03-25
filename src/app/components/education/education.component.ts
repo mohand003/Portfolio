@@ -272,7 +272,6 @@ export class EducationComponent {
     highlights: [
       'education.items.zagazig.highlights.0',
       'education.items.zagazig.highlights.1',
-      'education.items.zagazig.highlights.2',
     ]
   };
   

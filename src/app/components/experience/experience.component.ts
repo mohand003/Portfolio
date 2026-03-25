@@ -315,8 +315,6 @@ export class ExperienceComponent {
       achievements: [
         'experience.items.adaplo.achievements.0',
         'experience.items.adaplo.achievements.1',
-        'experience.items.adaplo.achievements.2',
-        'experience.items.adaplo.achievements.3',
       ]
     },
     {
@@ -327,8 +325,6 @@ export class ExperienceComponent {
       achievements: [
         'experience.items.saiket.achievements.0',
         'experience.items.saiket.achievements.1',
-        'experience.items.saiket.achievements.2',
-        'experience.items.saiket.achievements.3',
       ]
     },
   ];

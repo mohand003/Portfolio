@@ -246,15 +246,21 @@ export class SkillsComponent {
       icon: this.faAngular
     },
     {
-      name: 'SASS',
+      name: 'React',
       level: 85,
-      color: '#CC6699',
-      icon: this.faSass
+      color: '#61DAFB',
+      icon: this.faJs
     },
     {
-      name: 'React',
+      name: 'React Native',
       level: 80,
-      color: '#61DAFB',
+      color: '#00D8FF',
+      icon: this.faJs
+    },
+    {
+      name: 'Expo',
+      level: 75,
+      color: '#000000',
       icon: this.faJs
     },
     {
@@ -267,22 +273,10 @@ export class SkillsComponent {
 
   toolsSkills: Skill[] = [
     {
-      name: 'Git',
-      level: 88,
-      color: '#F05032',
-      icon: this.faGitAlt
-    },
-    {
-      name: 'Node.js',
-      level: 75,
-      color: '#339933',
-      icon: this.faNodeJs
-    },
-    {
-      name: 'C++',
+      name: 'SCSS',
       level: 80,
-      color: '#00599C',
-      icon: this.faJs
+      color: '#CC6699',
+      icon: this.faSass
     },
     {
       name: 'Bootstrap',
@@ -297,10 +291,16 @@ export class SkillsComponent {
       icon: this.faJs
     },
     {
-      name: 'Figma',
+      name: 'Node.js',
       level: 75,
-      color: '#F24E1E',
-      icon: this.faFigma
+      color: '#339933',
+      icon: this.faNodeJs
+    },
+    {
+      name: 'C++',
+      level: 80,
+      color: '#00599C',
+      icon: this.faJs
     },
     {
       name: 'Supabase',
@@ -315,10 +315,28 @@ export class SkillsComponent {
       icon: this.faJs
     },
     {
+      name: 'DOM',
+      level: 78,
+      color: '#F59E0B',
+      icon: this.faJs
+    },
+    {
+      name: 'BOM',
+      level: 70,
+      color: '#EF4444',
+      icon: this.faJs
+    },
+    {
       name: 'jQuery',
       level: 75,
       color: '#0769AD',
       icon: this.faJs
-    }
+    },
+    {
+      name: 'NGX-Translate',
+      level: 80,
+      color: '#4F46E5',
+      icon: this.faJs
+    },
   ];
 }

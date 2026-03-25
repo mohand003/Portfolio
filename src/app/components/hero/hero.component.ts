@@ -126,7 +126,7 @@ import { TranslateModule } from '@ngx-translate/core';
     }
     
     .name {
-      font-size: clamp(2rem, 6vw, 4rem);
+      font-size: clamp(1.5rem, 5vw, 3rem);
       line-height: 1.1;
       margin-bottom: var(--space-1);
       background: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-400));

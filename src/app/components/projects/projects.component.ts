@@ -368,6 +368,30 @@ export class ProjectsComponent {
       link: 'https://msh-suits.vercel.app/',
       featured: false
     },
+    {
+      id: 5,
+      title: 'projects.items.lutonEngineering.title',
+      description: 'projects.items.lutonEngineering.description',
+      image: 'https://res.cloudinary.com/df9rcxvpg/image/upload/v1774438147/Luton-Background.webp',
+      tech: ['React', 'React Native', 'Expo'],
+      featured: false
+    },
+    {
+      id: 6,
+      title: 'projects.items.homeInformationSystems.title',
+      description: 'projects.items.homeInformationSystems.description',
+      image: 'https://res.cloudinary.com/df9rcxvpg/image/upload/v1774438243/HIS-Background.webp',
+      tech: ['React'],
+      featured: false
+    },
+    {
+      id: 7,
+      title: 'projects.items.myMuslimHeroes.title',
+      description: 'projects.items.myMuslimHeroes.description',
+      image: 'https://res.cloudinary.com/df9rcxvpg/image/upload/v1774437826/MMH-Background.png',
+      tech: ['React Native', 'Expo', 'React'],
+      featured: false
+    },
   ];
   
   filteredProjects: Project[] = [];

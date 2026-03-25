@@ -11,14 +11,14 @@
     "intro": "Hello, I'm",
     "name": "Mohanad Mohammed Mostafa",
     "title": "Frontend Developer",
-    "description": "Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript.",
+    "description": "Frontend Developer skilled in Angular, React, and React Native with strong HTML/CSS/JavaScript/TypeScript expertise. Turning ideas into pixel-perfect interfaces from scratch and delivering cross-platform solutions like web dashboards, e-commerce platforms, and mobile apps.",
     "viewWork": "View My Work",
     "contactMe": "Contact Me"
   },
   "about": {
     "title": "About Me",
-    "subtitle": "Frontend Developer (Angular)",
-    "description": "Frontend Developer specializing in Angular framework with expertise in HTML, CSS, JavaScript, and TypeScript. Distinguished by exceptional design intuition and creative vision - able to conceptualize and build pixel-perfect, visually stunning interfaces entirely from scratch without requiring external design references or mockups.",
+    "subtitle": "Frontend Developer",
+    "description": "Frontend Developer skilled in Angular, React, and React Native with strong HTML/CSS/JavaScript/TypeScript expertise. Turning ideas into pixel-perfect interfaces from scratch and delivering cross-platform solutions like web dashboards, e-commerce platforms, and mobile apps.",
     "name": "Name:",
     "email": "Email:",
     "location": "Location:",
@@ -30,8 +30,8 @@
   "skills": {
     "title": "My Skills",
     "subtitle": "Technical Expertise",
-    "description1": "With a strong foundation in web technologies and a passion for clean, efficient code, I've developed expertise in a range of tools and frameworks that allow me to build performant, accessible, and beautiful web applications.",
-    "description2": "I'm constantly learning and experimenting with new technologies to stay ahead of industry trends and deliver cutting-edge solutions to complex problems.",
+    "description1": "With a strong foundation in web technologies and a passion for clean, efficient code, I've developed expertise in a range of tools and frameworks that allow me to build performant, accessible, and beautiful web applications—while keeping the UI architecture maintainable, scalable, and easy to extend.",
+    "description2": "I'm constantly learning and experimenting with new technologies to stay ahead of industry trends and deliver cutting-edge solutions to complex problems, whether it's crafting modern UI patterns, improving performance, or strengthening accessibility.",
     "frontend": "Frontend Development",
     "tools": "Tools & Others"
   },
@@ -45,19 +45,31 @@
     "items": {
       "uiEvolution": {
         "title": "Graduation Project: UI Generator (UI Evolution) - Grade: A+",
-        "description": "Developed complete frontend interface for AI-powered UI automation system using Angular, Bootstrap, and 3D JavaScript. Implemented user authentication, responsive design, and dynamic visual components with enhanced user experience."
+        "description": "Developed complete frontend interface for an AI-powered UI automation system using Angular, Bootstrap, and 3D JavaScript with user authentication and dynamic visual components. Led frontend architecture decisions ensuring seamless integration with backend AI services and a fully responsive, enhanced user experience."
       },
       "nileMart": {
         "title": "E-Commerce (Nile-Mart)",
-        "description": "Built a fully responsive Angular e-commerce web application with HTML5, CSS3, and TypeScript using LocalStorage for data persistence. Includes authentication, product management, shopping cart, and favorites."
+        "description": "Built a fully responsive Angular e-commerce application using TypeScript and LocalStorage with user authentication, product management, shopping cart, and favorites. Integrated search/filter functionality and profile management with a modern design and optimized user experience."
       },
       "superMart": {
         "title": "Super-Mart (Supermarket System)",
-        "description": "Developed a responsive Angular supermarket platform powered by TypeScript and LocalStorage. Provides customer shopping experience, offers browsing, and full administrative controls."
+        "description": "Built a responsive Angular supermarket website with TypeScript and LocalStorage featuring user shopping interface, offers browsing, and full administrative controls. Delivered a complete supermarket management system with a clean, modern UI and seamless navigation across all user and admin flows."
       },
       "mshSuits": {
         "title": "MSH Suits (Women's Suits E-Commerce)",
-        "description": "Built a full-stack e-commerce platform with Angular 20 frontend and Node.js backend. Delivered admin dashboard for orders, products, promo codes, JWT auth, multi-language support, theming, and shopping cart with order management."
+        "description": "Built a comprehensive full-stack e-commerce platform with Angular 20 frontend and Node.js backend, featuring JWT authentication, multi-language support, dark/light theme, and shopping cart with order management. Built a comprehensive admin dashboard for managing orders, products, and promo codes with full CRUD operations, RxJS state management, and optimized image handling."
+      },
+      "lutonEngineering": {
+        "title": "Luton Engineering – Web Dashboard & Mobile App (Ghana) - Oct 2025",
+        "description": "Built a full React web dashboard for a Ghanaian engineering company featuring authentication, roles & permissions system, complete warehouse and order management, and inter-warehouse transfers, alongside a modern, high-end landing page. Developed a React Native Expo mobile application mirroring the full dashboard experience for selected internal users, enabling on-the-go company management."
+      },
+      "homeInformationSystems": {
+        "title": "Home Information Systems – Web Dashboard (UK) - Dec 2025",
+        "description": "Developed a comprehensive React web dashboard for a UK-based company featuring authentication, roles & permissions system, and full management of warehouses, products, product categories, companies, and clients. Delivered a scalable, detail-oriented admin system covering every operational aspect of the business with a clean and intuitive UI."
+      },
+      "myMuslimHeroes": {
+        "title": "My Muslim Heroes – Islamic Quiz Mobile App & Admin Dashboard - Jun 2026",
+        "description": "Built a React Native mobile application featuring authentication, Islamic quizzes, games, and multi-level challenges with a points-based competitive system that unlocks progressively harder levels, alongside an educational mode to enhance Islamic knowledge. Developed a React web admin dashboard for full content control, managing all quizzes, stories, and app content to ensure everything stays within the app's Islamic guidelines."
       }
     }
   },
@@ -68,24 +80,20 @@
         "company": "Adaplo",
         "role": "Frontend Developer",
         "period": "Sept 2025 – Present",
-        "description": "Developing and maintaining responsive web applications using React framework.",
+        "description": "Developing and maintaining responsive web and mobile applications using React and React Native with Expo framework",
         "achievements": [
-          "Developing and maintaining responsive web applications using React framework",
           "Implementing modern UI/UX designs with TypeScript, HTML5, and CSS3",
-          "Collaborating with cross-functional teams to deliver high-quality frontend solutions",
-          "Writing clean, maintainable code following best practices and coding standards"
+          "Collaborating with cross-functional teams to deliver high-quality frontend solutions"
         ]
       },
       "saiket": {
-        "company": "Saiket Systems",
+        "company": "Saiket Systems 2",
         "role": "Frontend Intern",
         "period": "June 2025 – July 2025",
-        "description": "Completed a one-month frontend internship focused on real-world UI challenges.",
+        "description": "Completed a one-month frontend internship focused on real-world UI challenges, developing and delivering 6 diverse frontend tasks within set deadlines",
         "achievements": [
-          "Completed a one-month frontend internship focused on real-world UI challenges",
-          "Developed and delivered 6 diverse frontend tasks within set deadlines",
           "Applied HTML, CSS, and JavaScript skills to practical projects",
-          "Demonstrated strong problem-solving abilities and attention to detail in responsive design implementation"
+          "Maintained strong attention to detail in responsive design implementation"
         ]
       }
     }
@@ -99,8 +107,7 @@
         "period": "2021 – 2025",
         "highlights": [
           "Fresh graduate from Computer Science program",
-          "Strong foundation in data structures and algorithms",
-          "Comprehensive study of C++ and Object-Oriented Programming"
+          "Strong foundation in data structures, algorithms, C++, and Object-Oriented Programming"
         ]
       }
     }

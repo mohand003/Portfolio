@@ -191,7 +191,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       background-color: var(--color-primary-100);
       color: var(--color-primary-500);
       border-radius: 12px;
-      margin-right: var(--space-3);
+      /* Use logical properties so spacing works in both LTR/RTL */
+      margin-inline-start: 0;
+      margin-inline-end: var(--space-3);
       flex-shrink: 0;
       transition: all var(--transition-normal);
     }
@@ -424,7 +426,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       }
       
       .info-icon {
-        margin-right: 0;
+        margin-inline-end: 0;
         margin-bottom: var(--space-1);
       }
       
@@ -469,15 +471,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       }
     }
     
-    [dir="rtl"] .info-icon {
-      margin-right: 0;
-      margin-left: var(--space-3);
-    }
-    
-    @media (max-width: 576px) {
-      [dir="rtl"] .info-icon {
-        margin-left: 0;
-      }
+    /* RTL: keep text aligned to the start */
+    [dir="rtl"] .info-content {
+      text-align: right;
     }
   `,
   animations: [
